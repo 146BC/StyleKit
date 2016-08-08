@@ -1,11 +1,3 @@
-//
-//  StyleKitTests.swift
-//  StyleKitTests
-//
-//  Created by Bernard Gatt on 05/08/2016.
-//  Copyright © 2016 Bernard Gatt. All rights reserved.
-//
-
 import XCTest
 @testable import StyleKit
 
@@ -22,8 +14,11 @@ class StyleKitTests: XCTestCase {
     }
     
     func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        let test = JSONHandler.init(filePath: "/Volumes/Stuff/Dropbox/Work/ThePropertyProject/server/app.js")
+        debugPrint("-----------")
+        test?.load()
+        debugPrint("-----------")
+        XCTAssert(true)
     }
     
     func testPerformanceExample() {
