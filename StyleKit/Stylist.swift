@@ -14,15 +14,11 @@ class Stylist {
     }
     
     func apply() {
-        let exception = tryBlock {
+        SwiftTryCatch.tryBlock( {
             self.validateAndApply(self.data)
-        }
-        
-        if let exception = exception {
+        }, catchBlock: { exception in
             loggingPrint("There was an error while applying styles: \(exception)")
-        } else {
-            loggingPrint("Styles applied")
-        }
+        }, finallyBlock: nil)
     }
     
     private func validateAndApply(data: Style) {
