@@ -17,10 +17,12 @@
 		A104CE431D580D6A00626F2A /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A104CE421D580D6A00626F2A /* ColorExtensions.swift */; };
 		A10FD69E1D53FA2600341EDD /* StyleKit.h in Headers */ = {isa = PBXBuildFile; fileRef = A10FD69D1D53FA2600341EDD /* StyleKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A10FD6A51D53FA2600341EDD /* StyleKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A10FD69A1D53FA2600341EDD /* StyleKit.framework */; };
-		A10FD6AA1D53FA2600341EDD /* StyleKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10FD6A91D53FA2600341EDD /* StyleKitTests.swift */; };
+		A10FD6AA1D53FA2600341EDD /* StyleKitLoadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10FD6A91D53FA2600341EDD /* StyleKitLoadTests.swift */; };
 		A10FD6BF1D55357400341EDD /* FileLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10FD6BE1D55357400341EDD /* FileLoader.swift */; };
 		A10FD6C61D556A1F00341EDD /* StyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10FD6C51D556A1F00341EDD /* StyleKit.swift */; };
 		A10FD6C81D556A9C00341EDD /* Stylist.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10FD6C71D556A9C00341EDD /* Stylist.swift */; };
+		A1C5156B1D5A7DC00016BF1E /* success-style.json in Resources */ = {isa = PBXBuildFile; fileRef = A1C5156A1D5A7DC00016BF1E /* success-style.json */; };
+		A1C5156D1D5A7DE20016BF1E /* fail-style.json in Resources */ = {isa = PBXBuildFile; fileRef = A1C5156C1D5A7DE20016BF1E /* fail-style.json */; };
 		A1D8B1221D57C28A00355807 /* StyleParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D8B1211D57C28A00355807 /* StyleParser.swift */; };
 		A1E4676E1D59494C003B1AB2 /* LoggingPrint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E4676D1D59494C003B1AB2 /* LoggingPrint.swift */; };
 /* End PBXBuildFile section */
@@ -48,11 +50,13 @@
 		A10FD69D1D53FA2600341EDD /* StyleKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StyleKit.h; sourceTree = "<group>"; };
 		A10FD69F1D53FA2600341EDD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A10FD6A41D53FA2600341EDD /* StyleKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StyleKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A10FD6A91D53FA2600341EDD /* StyleKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleKitTests.swift; sourceTree = "<group>"; };
+		A10FD6A91D53FA2600341EDD /* StyleKitLoadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleKitLoadTests.swift; sourceTree = "<group>"; };
 		A10FD6AB1D53FA2600341EDD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A10FD6BE1D55357400341EDD /* FileLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileLoader.swift; sourceTree = "<group>"; };
 		A10FD6C51D556A1F00341EDD /* StyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleKit.swift; sourceTree = "<group>"; };
 		A10FD6C71D556A9C00341EDD /* Stylist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stylist.swift; sourceTree = "<group>"; };
+		A1C5156A1D5A7DC00016BF1E /* success-style.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "success-style.json"; path = "Style/success-style.json"; sourceTree = "<group>"; };
+		A1C5156C1D5A7DE20016BF1E /* fail-style.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "fail-style.json"; path = "Style/fail-style.json"; sourceTree = "<group>"; };
 		A1D8B1211D57C28A00355807 /* StyleParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleParser.swift; sourceTree = "<group>"; };
 		A1E4676D1D59494C003B1AB2 /* LoggingPrint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggingPrint.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -113,8 +117,9 @@
 		A10FD6A81D53FA2600341EDD /* StyleKitTests */ = {
 			isa = PBXGroup;
 			children = (
+				A1C515691D5A7D2B0016BF1E /* Style */,
+				A10FD6A91D53FA2600341EDD /* StyleKitLoadTests.swift */,
 				A10FD6AB1D53FA2600341EDD /* Info.plist */,
-				A10FD6A91D53FA2600341EDD /* StyleKitTests.swift */,
 			);
 			path = StyleKitTests;
 			sourceTree = "<group>";
@@ -127,6 +132,15 @@
 				9967759C1D5A3607005DA08A /* FontHelper.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		A1C515691D5A7D2B0016BF1E /* Style */ = {
+			isa = PBXGroup;
+			children = (
+				A1C5156A1D5A7DC00016BF1E /* success-style.json */,
+				A1C5156C1D5A7DE20016BF1E /* fail-style.json */,
+			);
+			name = Style;
 			sourceTree = "<group>";
 		};
 		A1D8B11C1D57BD8900355807 /* Utilities */ = {
@@ -240,6 +254,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1C5156B1D5A7DC00016BF1E /* success-style.json in Resources */,
+				A1C5156D1D5A7DE20016BF1E /* fail-style.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,7 +285,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A10FD6AA1D53FA2600341EDD /* StyleKitTests.swift in Sources */,
+				A10FD6AA1D53FA2600341EDD /* StyleKitLoadTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
