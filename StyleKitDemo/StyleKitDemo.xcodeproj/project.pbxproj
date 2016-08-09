@@ -20,6 +20,7 @@
 		A104CE3A1D57E4F000626F2A /* StyleKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A104CE391D57E4F000626F2A /* StyleKit.framework */; };
 		A104CE3D1D57E54000626F2A /* StyleKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A104CE391D57E4F000626F2A /* StyleKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A104CE411D57FEDB00626F2A /* SKNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A104CE401D57FEDB00626F2A /* SKNavigationBar.swift */; };
+		A1C515681D5A72CF0016BF1E /* StyleParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C515671D5A72CF0016BF1E /* StyleParser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -51,6 +52,7 @@
 		A104CE1F1D57E25E00626F2A /* SKTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SKTextField.swift; path = CustomViews/SKTextField.swift; sourceTree = "<group>"; };
 		A104CE391D57E4F000626F2A /* StyleKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = StyleKit.framework; path = "../Debug-iphonesimulator/StyleKit.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A104CE401D57FEDB00626F2A /* SKNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SKNavigationBar.swift; path = CustomViews/SKNavigationBar.swift; sourceTree = "<group>"; };
+		A1C515671D5A72CF0016BF1E /* StyleParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StyleParser.swift; path = Style/StyleParser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				A104CE161D57DD3300626F2A /* style.json */,
+				A1C515671D5A72CF0016BF1E /* StyleParser.swift */,
 			);
 			name = Style;
 			sourceTree = "<group>";
@@ -200,6 +203,7 @@
 			files = (
 				A104CE061D57DCD500626F2A /* ViewController.swift in Sources */,
 				A104CE1A1D57E1D700626F2A /* SKView.swift in Sources */,
+				A1C515681D5A72CF0016BF1E /* StyleParser.swift in Sources */,
 				A104CE411D57FEDB00626F2A /* SKNavigationBar.swift in Sources */,
 				A104CE041D57DCD500626F2A /* AppDelegate.swift in Sources */,
 				A104CE1E1D57E23C00626F2A /* SKLabel.swift in Sources */,
@@ -356,6 +360,7 @@
 				A104CE141D57DCD500626F2A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

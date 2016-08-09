@@ -10,7 +10,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         let styleFile = NSBundle.mainBundle().URLForResource("style", withExtension: "json")!
-        StyleKit(fileUrl: styleFile)?.apply()
+        
+        // Uses style parser within demo app
+        StyleKit(fileUrl: styleFile, styleParser: StyleParser())?.apply()
+        
+        // Uses default style parser
+        //StyleKit(fileUrl: styleFile)?.apply()
         
         return true
     }
