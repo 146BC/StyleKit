@@ -1,7 +1,7 @@
 import XCTest
 @testable import StyleKit
 
-class StyleKitTests: XCTestCase {
+class JSONLoadTests: XCTestCase {
     
     func testSuccessLoad() {
         
