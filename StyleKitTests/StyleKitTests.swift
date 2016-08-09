@@ -14,11 +14,6 @@ class StyleKitTests: XCTestCase {
     }
     
     func testExample() {
-        let test = JSONHandler.init(filePath: "/Volumes/Stuff/Dropbox/Work/ThePropertyProject/server/app.js")
-        debugPrint("-----------")
-        test?.load()
-        debugPrint("-----------")
-        XCTAssert(true)
     }
     
     func testPerformanceExample() {
