@@ -1,5 +1,5 @@
 #import <UIKit/UIKit.h>
-#import "ExceptionCatcher.h"
+#import "SwiftTryCatch.h"
 
 //! Project version number for StyleKit.
 FOUNDATION_EXPORT double StyleKitVersionNumber;
