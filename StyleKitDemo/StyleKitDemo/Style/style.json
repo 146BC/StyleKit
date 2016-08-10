@@ -21,7 +21,7 @@
     },
     "StyleKitDemo.SKNavigationBar": {
         "titleTextAttributes": {
-            "NSColor": "#000FFF",
+            "NSColor": "#99000FFF",
             "NSFont": "HelveticaNeue-Bold:30.0"
         }
     },
