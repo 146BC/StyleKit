@@ -1,7 +1,9 @@
-# StyleKit
-### A powerful easy to use styling framework written in Swift.
+![alt text](https://i.imgur.com/IqDIU4q.png "StyleKit - A powerful & easy to use styling framework written in Swift")
 
-StyleKit uses the appearance proxy of UIViews to style iOS applications from JSON.
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+
+StyleKit is a microframework that enables you to style your applications using a simple JSON file. Behind the scenes, StyleKit uses [UIAppearance](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIAppearance_Protocol/) and some selector magic to apply the styles. You can also customize the parser for greater flexibility. 
+
 
 ###How does it work?
 
@@ -79,7 +81,7 @@ Custom classes must be namespaced by the name of the module they are contained i
 
 ###Bring Your Own Parser
 
-StyleKit's initialiser supports sending in your own parser which should conform to the `StyleParsable` protocol.
+StyleKit's initialiser supports passing a custom parser which should conform to the `StyleParsable` protocol.
 
 *Default Parser*
 
