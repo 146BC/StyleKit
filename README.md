@@ -119,14 +119,21 @@ func application(application: UIApplication,
 
 ###How to install?
 
-Carthage
+####Carthage
 
 ```
 github "146BC/StyleKit" ~> 0.1
 ```
 
-CocoaPods
+####CocoaPods
+
+Add the 146BC Source
 
 ```
-Coming Soon
+source 'https://github.com/146BC/Specs.git'
+source 'https://github.com/CocoaPods/Specs.git'
+```
+
+```
+pod 'StyleKit', '~> 0.1'
 ```
