@@ -2,9 +2,7 @@ import Foundation
 
 public struct FontHelper {
     
-    public init() {}
-    
-    public func parseFont(font: String) -> UIFont? {
+    public static func parseFont(font: String) -> UIFont? {
         
         let fontString = font.componentsSeparatedByString(":")
         if let size = NSNumberFormatter().numberFromString(fontString.last!) as? CGFloat {
