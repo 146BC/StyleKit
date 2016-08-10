@@ -1,7 +1,7 @@
 #ifndef SwiftTryCatch_h
 #define SwiftTryCatch_h
 
-@interface SwiftTryCatch : NSObject
+@interface SKTryCatch : NSObject
 
 /**
  Provides try catch functionality for swift by wrapping around Objective-C

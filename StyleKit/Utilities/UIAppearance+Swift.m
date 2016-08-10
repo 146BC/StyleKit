@@ -2,7 +2,7 @@
 
 @implementation UIView (UIAppearance_Swift)
 
-+ (instancetype)appearanceWhenContainedWithin: (NSArray *)containers
++ (instancetype)styleKitAppearanceWhenContainedWithin: (NSArray *)containers
 {
     //Refer to: http://stackoverflow.com/a/28765193
     

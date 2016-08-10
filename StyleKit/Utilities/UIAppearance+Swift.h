@@ -3,5 +3,5 @@
 
 @interface UIView (UIAppearance_Swift)
 /// @param containers An array of Class<UIAppearanceContainer>
-+ (instancetype)appearanceWhenContainedWithin: (NSArray *)containers;
++ (instancetype)styleKitAppearanceWhenContainedWithin: (NSArray *)containers;
 @end
