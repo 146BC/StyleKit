@@ -5,7 +5,7 @@ class HelperTests: XCTestCase {
     
     func testColorHelper() {
         
-        guard let blackColor = ColorHelper().parseColor("#000000") else {
+        guard let blackColor = ColorHelper.parseColor("#000000") else {
             XCTFail("ColorHelper should return UIColor")
             return
         }
@@ -15,39 +15,39 @@ class HelperTests: XCTestCase {
         
         // Testing color helper with bad color parameter
         
-        XCTAssertNil(ColorHelper().parseColor("000000"),
+        XCTAssertNil(ColorHelper.parseColor("000000"),
                      "Color helper should return nil")
         
     }
     
     func testControlStateHelper() {
         
-        XCTAssertEqual(ControlStateHelper().parseControlState("normal"),
+        XCTAssertEqual(ControlStateHelper.parseControlState("normal"),
                        UIControlState.Normal.rawValue)
         
-        XCTAssertEqual(ControlStateHelper().parseControlState("disabled"),
+        XCTAssertEqual(ControlStateHelper.parseControlState("disabled"),
                        UIControlState.Disabled.rawValue)
         
-        XCTAssertEqual(ControlStateHelper().parseControlState("application"),
+        XCTAssertEqual(ControlStateHelper.parseControlState("application"),
                        UIControlState.Application.rawValue)
         
-        XCTAssertEqual(ControlStateHelper().parseControlState("focused"),
+        XCTAssertEqual(ControlStateHelper.parseControlState("focused"),
                        UIControlState.Focused.rawValue)
         
-        XCTAssertEqual(ControlStateHelper().parseControlState("highlighted"),
+        XCTAssertEqual(ControlStateHelper.parseControlState("highlighted"),
                        UIControlState.Highlighted.rawValue)
         
-        XCTAssertEqual(ControlStateHelper().parseControlState("reserved"),
+        XCTAssertEqual(ControlStateHelper.parseControlState("reserved"),
                        UIControlState.Reserved.rawValue)
         
-        XCTAssertEqual(ControlStateHelper().parseControlState("testfallback"),
+        XCTAssertEqual(ControlStateHelper.parseControlState("testfallback"),
                        UIControlState.Normal.rawValue)
         
     }
     
     func testFontHelper() {
         
-        guard let helveticaBoldBig = FontHelper().parseFont("Helvetica-Bold:30") else {
+        guard let helveticaBoldBig = FontHelper.parseFont("Helvetica-Bold:30") else {
             XCTFail("FontHelper should return UIFont")
             return
         }
@@ -59,13 +59,13 @@ class HelperTests: XCTestCase {
 
         // Testing font fallback with bad font parameter
         
-        XCTAssertEqual(FontHelper().parseFont("unknown:30"),
+        XCTAssertEqual(FontHelper.parseFont("unknown:30"),
                        UIFont.systemFontOfSize(30),
                        "Font helper should return system font with size 30")
         
         // Testing font helper with bad font:size parameter
         
-        XCTAssertNil(FontHelper().parseFont("font!size"),
+        XCTAssertNil(FontHelper.parseFont("font!size"),
                      "Font helper should return nil")
         
     }
