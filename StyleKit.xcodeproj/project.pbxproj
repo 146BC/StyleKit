@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		059932DC1D59E0DF0085E522 /* SwiftTryCatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 059932DB1D59E0DF0085E522 /* SwiftTryCatch.m */; };
 		059932DD1D59E1950085E522 /* SwiftTryCatch.h in Headers */ = {isa = PBXBuildFile; fileRef = 059932D81D59E09D0085E522 /* SwiftTryCatch.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		992723731D5B36D700B74CDD /* UIAppearance+Swift.h in Headers */ = {isa = PBXBuildFile; fileRef = 992723711D5B36D700B74CDD /* UIAppearance+Swift.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		992723741D5B36D700B74CDD /* UIAppearance+Swift.m in Sources */ = {isa = PBXBuildFile; fileRef = 992723721D5B36D700B74CDD /* UIAppearance+Swift.m */; };
 		996775991D5A2E8E005DA08A /* StyleParsable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996775981D5A2E8E005DA08A /* StyleParsable.swift */; };
 		9967759D1D5A3607005DA08A /* FontHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9967759C1D5A3607005DA08A /* FontHelper.swift */; };
 		9967759F1D5A3691005DA08A /* ColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9967759E1D5A3691005DA08A /* ColorHelper.swift */; };
@@ -41,6 +43,8 @@
 /* Begin PBXFileReference section */
 		059932D81D59E09D0085E522 /* SwiftTryCatch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftTryCatch.h; sourceTree = "<group>"; };
 		059932DB1D59E0DF0085E522 /* SwiftTryCatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwiftTryCatch.m; sourceTree = "<group>"; };
+		992723711D5B36D700B74CDD /* UIAppearance+Swift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAppearance+Swift.h"; sourceTree = "<group>"; };
+		992723721D5B36D700B74CDD /* UIAppearance+Swift.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAppearance+Swift.m"; sourceTree = "<group>"; };
 		996775981D5A2E8E005DA08A /* StyleParsable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleParsable.swift; sourceTree = "<group>"; };
 		9967759C1D5A3607005DA08A /* FontHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontHelper.swift; sourceTree = "<group>"; };
 		9967759E1D5A3691005DA08A /* ColorHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorHelper.swift; sourceTree = "<group>"; };
@@ -149,6 +153,8 @@
 		A1D8B11C1D57BD8900355807 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				992723711D5B36D700B74CDD /* UIAppearance+Swift.h */,
+				992723721D5B36D700B74CDD /* UIAppearance+Swift.m */,
 				A104CE421D580D6A00626F2A /* ColorExtensions.swift */,
 				A1E4676D1D59494C003B1AB2 /* LoggingPrint.swift */,
 				A104CE3E1D57E9D200626F2A /* StringExtensions.swift */,
@@ -166,6 +172,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				059932DD1D59E1950085E522 /* SwiftTryCatch.h in Headers */,
+				992723731D5B36D700B74CDD /* UIAppearance+Swift.h in Headers */,
 				A10FD69E1D53FA2600341EDD /* StyleKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -278,6 +285,7 @@
 				A10FD6C81D556A9C00341EDD /* Stylist.swift in Sources */,
 				A104CE431D580D6A00626F2A /* ColorExtensions.swift in Sources */,
 				9967759F1D5A3691005DA08A /* ColorHelper.swift in Sources */,
+				992723741D5B36D700B74CDD /* UIAppearance+Swift.m in Sources */,
 				A1D8B1221D57C28A00355807 /* StyleParser.swift in Sources */,
 				9967759D1D5A3607005DA08A /* FontHelper.swift in Sources */,
 				A10FD6C61D556A1F00341EDD /* StyleKit.swift in Sources */,
@@ -410,8 +418,9 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = StyleKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = BernardGatt.StyleKit;
+				PRODUCT_BUNDLE_IDENTIFIER = OneFourSixBC.StyleKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -431,8 +440,9 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = StyleKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = BernardGatt.StyleKit;
+				PRODUCT_BUNDLE_IDENTIFIER = OneFourSixBC.StyleKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
