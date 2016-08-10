@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		059932E91D5B248F0085E522 /* StyleKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 059932E71D5B244C0085E522 /* StyleKit.framework */; };
+		059932EA1D5B248F0085E522 /* StyleKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 059932E71D5B244C0085E522 /* StyleKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A104CE041D57DCD500626F2A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A104CE031D57DCD500626F2A /* AppDelegate.swift */; };
 		A104CE061D57DCD500626F2A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A104CE051D57DCD500626F2A /* ViewController.swift */; };
 		A104CE091D57DCD500626F2A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A104CE071D57DCD500626F2A /* Main.storyboard */; };
@@ -17,19 +19,18 @@
 		A104CE1C1D57E22000626F2A /* SKButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A104CE1B1D57E22000626F2A /* SKButton.swift */; };
 		A104CE1E1D57E23C00626F2A /* SKLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A104CE1D1D57E23C00626F2A /* SKLabel.swift */; };
 		A104CE201D57E25E00626F2A /* SKTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A104CE1F1D57E25E00626F2A /* SKTextField.swift */; };
-		A104CE3A1D57E4F000626F2A /* StyleKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A104CE391D57E4F000626F2A /* StyleKit.framework */; };
-		A104CE3D1D57E54000626F2A /* StyleKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A104CE391D57E4F000626F2A /* StyleKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A104CE411D57FEDB00626F2A /* SKNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A104CE401D57FEDB00626F2A /* SKNavigationBar.swift */; };
+		A1C515681D5A72CF0016BF1E /* StyleParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C515671D5A72CF0016BF1E /* StyleParser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		A104CE3C1D57E4F100626F2A /* Embed Frameworks */ = {
+		059932EB1D5B248F0085E522 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				A104CE3D1D57E54000626F2A /* StyleKit.framework in Embed Frameworks */,
+				059932EA1D5B248F0085E522 /* StyleKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -37,6 +38,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		059932E71D5B244C0085E522 /* StyleKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = StyleKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A104CE001D57DCD500626F2A /* StyleKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StyleKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A104CE031D57DCD500626F2A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A104CE051D57DCD500626F2A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -49,8 +51,8 @@
 		A104CE1B1D57E22000626F2A /* SKButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SKButton.swift; path = CustomViews/SKButton.swift; sourceTree = "<group>"; };
 		A104CE1D1D57E23C00626F2A /* SKLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SKLabel.swift; path = CustomViews/SKLabel.swift; sourceTree = "<group>"; };
 		A104CE1F1D57E25E00626F2A /* SKTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SKTextField.swift; path = CustomViews/SKTextField.swift; sourceTree = "<group>"; };
-		A104CE391D57E4F000626F2A /* StyleKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = StyleKit.framework; path = "../Debug-iphonesimulator/StyleKit.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A104CE401D57FEDB00626F2A /* SKNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SKNavigationBar.swift; path = CustomViews/SKNavigationBar.swift; sourceTree = "<group>"; };
+		A1C515671D5A72CF0016BF1E /* StyleParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StyleParser.swift; path = Style/StyleParser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A104CE3A1D57E4F000626F2A /* StyleKit.framework in Frameworks */,
+				059932E91D5B248F0085E522 /* StyleKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				A104CE161D57DD3300626F2A /* style.json */,
+				A1C515671D5A72CF0016BF1E /* StyleParser.swift */,
 			);
 			name = Style;
 			sourceTree = "<group>";
@@ -120,7 +123,7 @@
 		A104CE231D57E30A00626F2A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A104CE391D57E4F000626F2A /* StyleKit.framework */,
+				059932E71D5B244C0085E522 /* StyleKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -135,7 +138,7 @@
 				A104CDFC1D57DCD500626F2A /* Sources */,
 				A104CDFD1D57DCD500626F2A /* Frameworks */,
 				A104CDFE1D57DCD500626F2A /* Resources */,
-				A104CE3C1D57E4F100626F2A /* Embed Frameworks */,
+				059932EB1D5B248F0085E522 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -200,6 +203,7 @@
 			files = (
 				A104CE061D57DCD500626F2A /* ViewController.swift in Sources */,
 				A104CE1A1D57E1D700626F2A /* SKView.swift in Sources */,
+				A1C515681D5A72CF0016BF1E /* StyleParser.swift in Sources */,
 				A104CE411D57FEDB00626F2A /* SKNavigationBar.swift in Sources */,
 				A104CE041D57DCD500626F2A /* AppDelegate.swift in Sources */,
 				A104CE1E1D57E23C00626F2A /* SKLabel.swift in Sources */,
@@ -321,7 +325,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = StyleKitDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = BernardGatt.StyleKitDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = OneFourSixBC.StyleKitDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -332,7 +336,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = StyleKitDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = BernardGatt.StyleKitDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = OneFourSixBC.StyleKitDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -356,6 +360,7 @@
 				A104CE141D57DCD500626F2A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

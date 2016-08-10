@@ -1,7 +1,7 @@
 #import <Foundation/Foundation.h>
-#import "SwiftTryCatch.h"
+#import "SKTryCatch.h"
 
-@implementation SwiftTryCatch
+@implementation SKTryCatch
 
 /**
  Provides try catch functionality for swift by wrapping around Objective-C

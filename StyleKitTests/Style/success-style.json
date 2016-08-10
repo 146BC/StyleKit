@@ -1,0 +1,13 @@
+{
+    "UINavigationBar": {
+        "UILabel": {
+            "font": "HelveticaNeue-Bold:30.0",
+            "backgroundColor": "#000FFF",
+        }
+    },
+    "UIButton": {
+        "font": "HelveticaNeue-Light:20.0",
+        "titleColor:normal":"#FFFFFF",
+        "titleColor:highlighted":"#000000"
+    }
+}
