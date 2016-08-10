@@ -2,9 +2,7 @@ import Foundation
 
 public struct ColorHelper {
     
-    public init() {}
-    
-    public func parseColor(color: String) -> UIColor? {
+    public static func parseColor(color: String) -> UIColor? {
         
         do {
             let colorRegex = try NSRegularExpression(pattern: "^#[0-9a-f]{6}|#[0-9a-f]{3}$", options: .CaseInsensitive)

@@ -2,7 +2,7 @@ import Foundation
 
 struct ControlStateHelper {
     
-    func parseControlState(state: String) -> UInt {
+    static func parseControlState(state: String) -> UInt {
         
         switch state {
         case "normal": return UIControlState.Normal.rawValue

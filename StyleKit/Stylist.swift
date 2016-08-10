@@ -63,7 +63,7 @@ class Stylist {
         var state: AnyObject?
         if nameState.count == 2 {
             selectorName = "\(nameState.first!):forState"
-            state = ControlStateHelper().parseControlState(nameState.last!)
+            state = ControlStateHelper.parseControlState(nameState.last!)
         } else {
             state = nil
         }
