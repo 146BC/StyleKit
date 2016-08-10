@@ -95,15 +95,25 @@ class Stylist {
         
         if valueOne == nil && valueTwo == nil {
             if isViewStackRelevant {
-                self.currentComponent?.appearanceWhenContainedInInstancesOfClasses(viewStack).performSelector(Selector(modifiedSelector))
+                if #available(iOS 9.0, *) {
+                    self.currentComponent?.appearanceWhenContainedInInstancesOfClasses(viewStack).performSelector(Selector(modifiedSelector))
+                } else {
+                    self.currentComponent?.appearanceWhenContainedWithin(viewStack).performSelector(Selector(modifiedSelector))
+                }
             } else {
                 self.currentComponent?.appearance().performSelector(Selector(modifiedSelector))
             }
         } else if valueOne != nil && valueTwo != nil {
             if isViewStackRelevant {
-                let methodSignature = self.currentComponent!.appearanceWhenContainedInInstancesOfClasses(viewStack).methodForSelector(Selector(modifiedSelector))
-                let callback = unsafeBitCast(methodSignature, setValueForControlState.self)
-                callback(self.currentComponent!.appearanceWhenContainedInInstancesOfClasses(viewStack), Selector(modifiedSelector), valueOne!, valueTwo as! UInt)
+                if #available(iOS 9.0, *) {
+                    let methodSignature = self.currentComponent!.appearanceWhenContainedInInstancesOfClasses(viewStack).methodForSelector(Selector(modifiedSelector))
+                    let callback = unsafeBitCast(methodSignature, setValueForControlState.self)
+                    callback(self.currentComponent!.appearanceWhenContainedInInstancesOfClasses(viewStack), Selector(modifiedSelector), valueOne!, valueTwo as! UInt)
+                } else {
+                    let methodSignature = self.currentComponent!.appearanceWhenContainedWithin(viewStack).methodForSelector(Selector(modifiedSelector))
+                    let callback = unsafeBitCast(methodSignature, setValueForControlState.self)
+                    callback(self.currentComponent!.appearanceWhenContainedWithin(viewStack), Selector(modifiedSelector), valueOne!, valueTwo as! UInt)
+                }
             } else {
                 let methodSignature = self.currentComponent!.appearance().methodForSelector(Selector(modifiedSelector))
                 let callback = unsafeBitCast(methodSignature, setValueForControlState.self)
@@ -111,7 +121,11 @@ class Stylist {
             }
         } else if valueOne != nil {
             if isViewStackRelevant {
-                self.currentComponent?.appearanceWhenContainedInInstancesOfClasses(viewStack).performSelector(Selector(modifiedSelector), withObject: valueOne!)
+                if #available(iOS 9.0, *) {
+                    self.currentComponent?.appearanceWhenContainedInInstancesOfClasses(viewStack).performSelector(Selector(modifiedSelector), withObject: valueOne!)
+                } else {
+                    self.currentComponent?.appearanceWhenContainedWithin(viewStack).performSelector(Selector(modifiedSelector), withObject: valueOne!)
+                }
             } else {
                 self.currentComponent?.appearance().performSelector(Selector(modifiedSelector), withObject: valueOne!)
             }

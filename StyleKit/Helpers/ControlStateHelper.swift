@@ -6,7 +6,9 @@ struct ControlStateHelper {
         
         switch state {
         case "normal": return UIControlState.Normal.rawValue
-        case "focused": return UIControlState.Focused.rawValue
+        case "focused":
+            if #available(iOS 9.0, *) { return UIControlState.Focused.rawValue }
+            else { return UIControlState.Highlighted.rawValue }
         case "highlighted": return UIControlState.Highlighted.rawValue
         case "disabled": return UIControlState.Disabled.rawValue
         case "application": return UIControlState.Application.rawValue
