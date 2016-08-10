@@ -6,10 +6,12 @@ class Stylist {
     typealias setValueForControlState = @convention(c) (AnyObject, Selector, AnyObject, UInt) -> Void
     
     let data: Style
+    let styleParser: StyleParsable
     var currentComponent: AnyClass?
     var viewStack = [AnyClass]()
     
-    init(data: Style) {
+    init(data: Style, styleParser: StyleParsable?) {
+        self.styleParser = styleParser ?? StyleParser()
         self.data = data
     }
     
@@ -61,7 +63,7 @@ class Stylist {
         var state: AnyObject?
         if nameState.count == 2 {
             selectorName = "\(nameState.first!):forState"
-            state = ValueTypeChecker().parseControlState(nameState.last!)
+            state = ControlStateHelper.parseControlState(nameState.last!)
         } else {
             state = nil
         }
@@ -70,11 +72,11 @@ class Stylist {
         if let styles = object as? Stylist.Style {
             var stylesToApply = Stylist.Style()
             for (style, value) in styles {
-                stylesToApply[style] = ValueTypeChecker().getStyleFromValue(value as! String)
+                stylesToApply[style] = styleParser.getStyle(forName: name, value: value as! String)
             }
             callAppearanceSelector(selectorName, valueOne: stylesToApply, valueTwo: state)
         } else if let object = object as? String {
-            let value = ValueTypeChecker().getStyleFromValue(object)
+            let value = styleParser.getStyle(forName: name, value: object)
             callAppearanceSelector(selectorName, valueOne: value, valueTwo: state)
         } else {
             loggingPrint("Skipping: \(selectorName), couldn't map to object")
