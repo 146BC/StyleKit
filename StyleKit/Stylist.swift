@@ -16,7 +16,7 @@ class Stylist {
     }
     
     func apply() {
-        SwiftTryCatch.tryBlock( {
+        SKTryCatch.tryBlock( {
             self.validateAndApply(self.data)
         }, catchBlock: { exception in
             loggingPrint("There was an error while applying styles: \(exception)")
@@ -98,7 +98,7 @@ class Stylist {
                 if #available(iOS 9.0, *) {
                     self.currentComponent?.appearanceWhenContainedInInstancesOfClasses(viewStack).performSelector(Selector(modifiedSelector))
                 } else {
-                    self.currentComponent?.appearanceWhenContainedWithin(viewStack).performSelector(Selector(modifiedSelector))
+                    self.currentComponent?.styleKitAppearanceWhenContainedWithin(viewStack).performSelector(Selector(modifiedSelector))
                 }
             } else {
                 self.currentComponent?.appearance().performSelector(Selector(modifiedSelector))
@@ -110,9 +110,9 @@ class Stylist {
                     let callback = unsafeBitCast(methodSignature, setValueForControlState.self)
                     callback(self.currentComponent!.appearanceWhenContainedInInstancesOfClasses(viewStack), Selector(modifiedSelector), valueOne!, valueTwo as! UInt)
                 } else {
-                    let methodSignature = self.currentComponent!.appearanceWhenContainedWithin(viewStack).methodForSelector(Selector(modifiedSelector))
+                    let methodSignature = self.currentComponent!.styleKitAppearanceWhenContainedWithin(viewStack).methodForSelector(Selector(modifiedSelector))
                     let callback = unsafeBitCast(methodSignature, setValueForControlState.self)
-                    callback(self.currentComponent!.appearanceWhenContainedWithin(viewStack), Selector(modifiedSelector), valueOne!, valueTwo as! UInt)
+                    callback(self.currentComponent!.styleKitAppearanceWhenContainedWithin(viewStack), Selector(modifiedSelector), valueOne!, valueTwo as! UInt)
                 }
             } else {
                 let methodSignature = self.currentComponent!.appearance().methodForSelector(Selector(modifiedSelector))
@@ -124,7 +124,7 @@ class Stylist {
                 if #available(iOS 9.0, *) {
                     self.currentComponent?.appearanceWhenContainedInInstancesOfClasses(viewStack).performSelector(Selector(modifiedSelector), withObject: valueOne!)
                 } else {
-                    self.currentComponent?.appearanceWhenContainedWithin(viewStack).performSelector(Selector(modifiedSelector), withObject: valueOne!)
+                    self.currentComponent?.styleKitAppearanceWhenContainedWithin(viewStack).performSelector(Selector(modifiedSelector), withObject: valueOne!)
                 }
             } else {
                 self.currentComponent?.appearance().performSelector(Selector(modifiedSelector), withObject: valueOne!)
