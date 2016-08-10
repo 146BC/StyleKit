@@ -53,7 +53,7 @@ func application(application: UIApplication,
 }
 ```
 
-That's it, on application launch the JSON file will be loaded and the styles applied.
+On application launch the JSON file will be loaded and the styles applied.
 
 
 ###The JSON file structure
@@ -75,9 +75,11 @@ Each object inside the JSON file should contain the name of the UIView as a key 
 
 This would apply HelveticaNeue-Bold with size 20 to all the UIButtons except the ones contained inside the LoginView class in your app.
 
+Custom classes must be namespaced by the name of the module they are contained in. e.g. `StyleKitDemo.SKTextField`
+
 ###Bring Your Own Parser
 
-StyleKit's initialiser supports sending in your own parser, the parser needs to support the `StyleParsable` protocol.
+StyleKit's initialiser supports sending in your own parser which should conform to the `StyleParsable` protocol.
 
 *Default Parser*
 
@@ -86,9 +88,9 @@ class StyleParser: StyleParsable {
     
     func getStyle(forName name: String, value: String) -> AnyObject? {
         
-        if let font = FontHelper().parseFont(value) {
+        if let font = FontHelper.parseFont(value) {
             return font
-        } else if let color = ColorHelper().parseColor(value) {
+        } else if let color = ColorHelper.parseColor(value) {
             return color
         } else {
             return value
