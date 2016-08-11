@@ -32,6 +32,9 @@ class Stylist {
                 }
                 validateAndApply(value)
                 viewStack.popLast()
+                if viewStack.count > 0 {
+                    self.currentComponent = viewStack.last
+                }
             }
             else {
                 if let currentComponent = self.currentComponent {
@@ -92,6 +95,7 @@ class Stylist {
         viewStack.popLast()
         
         let isViewStackRelevant = viewStack.count > 0
+        viewStack = viewStack.reverse()
         
         if valueOne == nil && valueTwo == nil {
             if isViewStackRelevant {

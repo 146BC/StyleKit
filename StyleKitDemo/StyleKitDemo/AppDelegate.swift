@@ -12,10 +12,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let styleFile = NSBundle.mainBundle().URLForResource("style", withExtension: "json")!
         
         // Uses style parser within demo app
-        StyleKit(fileUrl: styleFile, styleParser: StyleParser())?.apply()
+        //StyleKit(fileUrl: styleFile, styleParser: StyleParser())?.apply()
         
         // Uses default style parser
-        //StyleKit(fileUrl: styleFile)?.apply()
+        StyleKit(fileUrl: styleFile)?.apply()
         
         return true
     }
