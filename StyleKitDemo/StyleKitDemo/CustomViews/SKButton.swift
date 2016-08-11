@@ -3,44 +3,26 @@ import UIKit
 
 class SKButton: UIButton {
     
-    internal var styleType = Type.Standard
-    
-    enum Type:String {
-        case Standard = "standard"
-        case Primary = "primary"
-        case Secondary = "secondary"
-    }
-    
     private var backgroundColors: [UInt: UIColor] = [:]
-    
-    func setNormalBackgroundColor(color: UIColor) {
-        backgroundColors[UIControlState.Normal.rawValue] = color
-        stateDidChange(UIControlState.Normal)
-    }
-    
-    func setHighlightedBackgroundColor(color: UIColor) {
-        backgroundColors[UIControlState.Highlighted.rawValue] = color
-    }
-    
-    func setStyle(type:String) {
-        self.styleType = Type.init(rawValue: type)!
-    }
     
     override var selected: Bool {
         didSet {
-            stateDidChange(state)
+            updateBackgroundColorForState(state)
         }
     }
     
     override var highlighted: Bool {
         didSet {
-            stateDidChange(state)
+            updateBackgroundColorForState(state)
         }
     }
     
-    private func stateDidChange(state: UIControlState) {
-        self.setTitle(styleType.rawValue, forState: state)
-        updateBackgroundColorForState(state)
+    func setBackgroundColor(color: UIColor, forState state: UIControlState) {
+        backgroundColors[state.rawValue] = color
+        
+        if state == UIControlState.Normal {
+            updateBackgroundColorForState(state)
+        }
     }
     
     private func updateBackgroundColorForState(state: UIControlState) {
