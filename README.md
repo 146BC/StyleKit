@@ -11,32 +11,32 @@ StyleKit is a microframework that enables you to style your applications using a
 
 ```
 {
-    "UILabel": {
-        "font": "HelveticaNeue-Bold:30.0",
-        "backgroundColor": "#000FFF"
-    },
-    "StyleKitDemo.SKView": {
-        "StyleKitDemo.SKLabel": {
-            "font": "HelveticaNeue-Bold:20.0",
-            "backgroundColor": "#FFF000",
-            "color": "#fff"
-        },
-        "StyleKitDemo.SKButton": {
-            "font": "HelveticaNeue-Light:20.0",
-            "titleColor:normal":"#FFFFFF",
-            "titleColor:highlighted":"#000000"
-        }
-    },
-    "StyleKitDemo.SKNavigationBar": {
-        "titleTextAttributes": {
-            "NSColor": "#000FFF",
-            "NSFont": "HelveticaNeue-Bold:30.0"
-        }
-    },
-    "StyleKitDemo.SKTextField": {
-        "font": "HelveticaNeue-Light:20.0",
-        "textColor": "#000FFF"
-    }
+	"UILabel": {
+		"font": "HelveticaNeue-Bold:30.0",
+		"backgroundColor": "#000FFF"
+	},
+	"StyleKitDemo.SKView": {
+		"StyleKitDemo.SKLabel": {
+			"font": "HelveticaNeue-Bold:20.0",
+			"backgroundColor": "#FFF000",
+			"color": "#fff"
+		},
+		"StyleKitDemo.SKButton": {
+			"font": "HelveticaNeue-Light:20.0",
+			"titleColor:normal": "#FFFFFF",
+			"titleColor:highlighted": "#000000"
+		}
+	},
+	"StyleKitDemo.SKNavigationBar": {
+		"titleTextAttributes": {
+			"NSColor": "#000FFF",
+			"NSFont": "HelveticaNeue-Bold:30.0"
+		}
+	},
+	"StyleKitDemo.SKTextField": {
+		"font": "HelveticaNeue-Light:20.0",
+		"textColor": "#000FFF"
+	}
 }
 ```
 ####Load JSON file
@@ -64,14 +64,14 @@ Each object inside the JSON file should contain the name of the UIView as a key 
 
 ```
 {
-    "UIButton": {
-        "font": "HelveticaNeue-Bold:20.0"
-    },
-    "MyApp.LoginView": {
-	    "UIButton": {
-	        "font": "HelveticaNeue-Light:25.0"
-	    }
-    }
+	"UIButton": {
+		"font": "HelveticaNeue-Bold:20.0"
+	},
+	"MyApp.LoginView": {
+		"UIButton": {
+			"font": "HelveticaNeue-Light:25.0"
+		}
+	}
 }
 ```
 
@@ -122,7 +122,7 @@ func application(application: UIApplication,
 ####Carthage
 
 ```
-github "146BC/StyleKit" ~> 0.1
+github "146BC/StyleKit" ~> 0.2
 ```
 
 ####CocoaPods
@@ -135,5 +135,5 @@ source 'https://github.com/CocoaPods/Specs.git'
 ```
 
 ```
-pod 'StyleKit', '~> 0.1'
+pod 'StyleKit', '~> 0.2'
 ```
