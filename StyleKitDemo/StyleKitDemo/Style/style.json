@@ -25,7 +25,8 @@
         "backgroundColor:highlighted": "#8000c6",
         "titleColor:normal": "#fff",
         "titleColor:highlighted": "#fff",
-        "font": "HelveticaNeue-Light:13.0"
+        "font": "HelveticaNeue-Light:13.0",
+        "transparency":70
     },
     "UIButton": {
         "font": "HelveticaNeue-Medium:13.0",
@@ -46,9 +47,11 @@
             "color": "#000"
         },
         "StyleKitDemo.SKView": {
-            "UILabel": {
+            "StyleKitDemo.SKLabel": {
                 "font": "HelveticaNeue-Bold:15.0",
-                "color": "#cd0073"
+                "color": "#cd0073",
+                "padding": [0,30,0,0],
+                "backgroundColor": "#eee"
             }
         }
     },

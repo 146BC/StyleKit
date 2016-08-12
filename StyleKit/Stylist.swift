@@ -75,14 +75,12 @@ class Stylist {
         if let styles = object as? Stylist.Style {
             var stylesToApply = Stylist.Style()
             for (style, value) in styles {
-                stylesToApply[style] = styleParser.getStyle(forName: name, value: value as! String)
+                stylesToApply[style] = styleParser.getStyle(forName: name, value: value)
             }
             callAppearanceSelector(selectorName, valueOne: stylesToApply, valueTwo: state)
-        } else if let object = object as? String {
+        } else {
             let value = styleParser.getStyle(forName: name, value: object)
             callAppearanceSelector(selectorName, valueOne: value, valueTwo: state)
-        } else {
-            loggingPrint("Skipping: \(selectorName), couldn't map to object")
         }
         
     }
