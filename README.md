@@ -122,7 +122,7 @@ func application(application: UIApplication,
 ####Carthage
 
 ```
-github "146BC/StyleKit" ~> 0.2
+github "146BC/StyleKit" ~> 0.3
 ```
 
 ####CocoaPods
@@ -135,5 +135,5 @@ source 'https://github.com/CocoaPods/Specs.git'
 ```
 
 ```
-pod 'StyleKit', '~> 0.2'
+pod 'StyleKit', '~> 0.3'
 ```
