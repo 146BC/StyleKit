@@ -45,13 +45,13 @@ StyleKit is a microframework that enables you to style your applications using a
 
 ```
 func application(application: UIApplication,
-                     didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        
-	let styleFile = NSBundle.mainBundle().URLForResource("style", withExtension: "json")!
-        
-	StyleKit(fileUrl: styleFile)?.apply()
-        
-	return true
+                 didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    
+    if let styleFile = NSBundle.mainBundle().URLForResource("style", withExtension: "json") {
+        StyleKit(fileUrl: styleFile)?.apply()
+    }
+    
+    return true
 }
 ```
 
@@ -107,13 +107,13 @@ class StyleParser: StyleParsable {
 
 ```
 func application(application: UIApplication,
-                     didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        
-	let styleFile = NSBundle.mainBundle().URLForResource("style", withExtension: "json")!
-        
-	StyleKit(fileUrl: styleFile, styleParser: StyleParser())?.apply()
-        
-	return true
+                 didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    
+    if let styleFile = NSBundle.mainBundle().URLForResource("style", withExtension: "json") {
+		StyleKit(fileUrl: styleFile, styleParser: StyleParser())?.apply()
+    }
+    
+    return true
 }
 ```
 
