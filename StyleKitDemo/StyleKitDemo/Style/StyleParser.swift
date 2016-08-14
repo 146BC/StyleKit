@@ -10,12 +10,9 @@ class StyleParser: StyleParsable {
                 return font
             } else if let color = ColorHelper.parseColor(value) {
                 return color
-            } else {
-                return value
             }
-        } else {
-            return value
         }
+        return value
         
     }
 }
