@@ -1,0 +1,167 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>StyleKit by 146BC</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>StyleKit</h1>
+        <p>A powerful &amp; easy to use styling framework written in Swift</p>
+
+        <p class="view"><a href="https://github.com/146BC/StyleKit">View the Project on GitHub <small>146BC/StyleKit</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/146BC/StyleKit/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/146BC/StyleKit/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/146BC/StyleKit">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <p>StyleKit is a microframework that enables you to style your applications using a simple JSON file. Behind the scenes, StyleKit uses <a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIAppearance_Protocol/">UIAppearance</a> and some selector magic to apply the styles. You can also customize the parser for greater flexibility.</p>
+
+<h3>
+<a id="how-does-it-work" class="anchor" href="#how-does-it-work" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How does it work?</h3>
+
+<h4>
+<a id="create-a-json-file-in-the-following-format" class="anchor" href="#create-a-json-file-in-the-following-format" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Create a JSON file in the following format</h4>
+
+<div class="highlight highlight-source-js"><pre>{
+    <span class="pl-s"><span class="pl-pds">"</span>UILabel<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+        <span class="pl-s"><span class="pl-pds">"</span>font<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>HelveticaNeue-Bold:30.0<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>backgroundColor<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>#000FFF<span class="pl-pds">"</span></span>
+    },
+    <span class="pl-s"><span class="pl-pds">"</span>StyleKitDemo.SKView<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+        <span class="pl-s"><span class="pl-pds">"</span>StyleKitDemo.SKLabel<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+            <span class="pl-s"><span class="pl-pds">"</span>font<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>HelveticaNeue-Bold:20.0<span class="pl-pds">"</span></span>,
+            <span class="pl-s"><span class="pl-pds">"</span>backgroundColor<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>#FFF000<span class="pl-pds">"</span></span>,
+            <span class="pl-s"><span class="pl-pds">"</span>color<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>#fff<span class="pl-pds">"</span></span>
+        },
+        <span class="pl-s"><span class="pl-pds">"</span>StyleKitDemo.SKButton<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+            <span class="pl-s"><span class="pl-pds">"</span>font<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>HelveticaNeue-Light:20.0<span class="pl-pds">"</span></span>,
+            <span class="pl-s"><span class="pl-pds">"</span>titleColor:normal<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>#FFFFFF<span class="pl-pds">"</span></span>,
+            <span class="pl-s"><span class="pl-pds">"</span>titleColor:highlighted<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>#000000<span class="pl-pds">"</span></span>
+        }
+    },
+    <span class="pl-s"><span class="pl-pds">"</span>StyleKitDemo.SKNavigationBar<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+        <span class="pl-s"><span class="pl-pds">"</span>titleTextAttributes<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+            <span class="pl-s"><span class="pl-pds">"</span>NSColor<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>#000FFF<span class="pl-pds">"</span></span>,
+            <span class="pl-s"><span class="pl-pds">"</span>NSFont<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>HelveticaNeue-Bold:30.0<span class="pl-pds">"</span></span>
+        }
+    },
+    <span class="pl-s"><span class="pl-pds">"</span>StyleKitDemo.SKTextField<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+        <span class="pl-s"><span class="pl-pds">"</span>font<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>HelveticaNeue-Light:20.0<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>textColor<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>#000FFF<span class="pl-pds">"</span></span>
+    }
+}</pre></div>
+
+<h4>
+<a id="load-json-file" class="anchor" href="#load-json-file" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Load JSON file</h4>
+
+<p><em>AppDelegate.swift</em></p>
+
+<div class="highlight highlight-source-swift"><pre><span class="pl-k">func</span> <span class="pl-en">application</span>(application: UIApplication,
+                 <span class="pl-en">didFinishLaunchingWithOptions</span> <span class="pl-smi">launchOptions</span>: [NSObject: <span class="pl-c1">AnyObject</span>]?) <span class="pl-k">-&gt;</span> <span class="pl-c1">Bool</span> {
+
+    <span class="pl-k">if</span> <span class="pl-k">let</span> styleFile <span class="pl-k">=</span> NSBundle<span class="pl-k">.</span>mainBundle()<span class="pl-k">.</span>URLForResource(<span class="pl-s"><span class="pl-pds">"</span>style<span class="pl-pds">"</span></span>, withExtension: <span class="pl-s"><span class="pl-pds">"</span>json<span class="pl-pds">"</span></span>) {
+        StyleKit(fileUrl: styleFile)?<span class="pl-k">.</span>apply()
+    }
+
+    <span class="pl-k">return</span> <span class="pl-c1">true</span>
+}</pre></div>
+
+<p>On application launch the JSON file will be loaded and the styles applied.</p>
+
+<h3>
+<a id="the-json-file-structure" class="anchor" href="#the-json-file-structure" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The JSON file structure</h3>
+
+<p>Each object inside the JSON file should contain the name of the UIView as a key and the object inside should either contain the properties/functions that need to be set/called or another UIView, this will give you the ability to apply styles on views when contained in other views, an example of this would be the following.</p>
+
+<div class="highlight highlight-source-js"><pre>{
+    <span class="pl-s"><span class="pl-pds">"</span>UIButton<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+        <span class="pl-s"><span class="pl-pds">"</span>font<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>HelveticaNeue-Bold:20.0<span class="pl-pds">"</span></span>
+    },
+    <span class="pl-s"><span class="pl-pds">"</span>MyApp.LoginView<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+        <span class="pl-s"><span class="pl-pds">"</span>UIButton<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+            <span class="pl-s"><span class="pl-pds">"</span>font<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>HelveticaNeue-Light:25.0<span class="pl-pds">"</span></span>
+        }
+    }
+}</pre></div>
+
+<p>This would apply HelveticaNeue-Bold with size 20 to all the UIButtons except the ones contained inside the LoginView class in your app.</p>
+
+<p>Custom classes must be namespaced by the name of the module they are contained in. e.g. <code>StyleKitDemo.SKTextField</code></p>
+
+<h3>
+<a id="bring-your-own-parser" class="anchor" href="#bring-your-own-parser" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Bring Your Own Parser</h3>
+
+<p>StyleKit's initialiser supports passing a custom parser which should conform to the <code>StyleParsable</code> protocol.</p>
+
+<p><em>Default Parser</em></p>
+
+<div class="highlight highlight-source-swift"><pre><span class="pl-k">class</span> StyleParser: StyleParsable {
+
+    <span class="pl-k">func</span> <span class="pl-en">getStyle</span>(<span class="pl-en">forName</span> <span class="pl-smi">name</span>: <span class="pl-c1">String</span>, value: <span class="pl-c1">AnyObject</span>) <span class="pl-k">-&gt;</span> <span class="pl-c1">AnyObject</span> {
+
+        <span class="pl-k">if</span> <span class="pl-k">let</span> value <span class="pl-k">=</span> value <span class="pl-k">as?</span> <span class="pl-c1">String</span> {
+            <span class="pl-k">if</span> <span class="pl-k">let</span> font <span class="pl-k">=</span> FontHelper<span class="pl-k">.</span>parseFont(value) {
+                <span class="pl-k">return</span> font
+            } <span class="pl-k">else</span> <span class="pl-k">if</span> <span class="pl-k">let</span> color <span class="pl-k">=</span> ColorHelper<span class="pl-k">.</span>parseColor(value) {
+                <span class="pl-k">return</span> color
+            }
+        }
+        <span class="pl-k">return</span> value
+
+    }
+}</pre></div>
+
+<p><em>AppDelegate.swift</em></p>
+
+<div class="highlight highlight-source-swift"><pre><span class="pl-k">func</span> <span class="pl-en">application</span>(application: UIApplication,
+                 <span class="pl-en">didFinishLaunchingWithOptions</span> <span class="pl-smi">launchOptions</span>: [NSObject: <span class="pl-c1">AnyObject</span>]?) <span class="pl-k">-&gt;</span> <span class="pl-c1">Bool</span> {
+
+    <span class="pl-k">if</span> <span class="pl-k">let</span> styleFile <span class="pl-k">=</span> NSBundle<span class="pl-k">.</span>mainBundle()<span class="pl-k">.</span>URLForResource(<span class="pl-s"><span class="pl-pds">"</span>style<span class="pl-pds">"</span></span>, withExtension: <span class="pl-s"><span class="pl-pds">"</span>json<span class="pl-pds">"</span></span>) {
+        StyleKit(fileUrl: styleFile, styleParser: StyleParser())?<span class="pl-k">.</span>apply()
+    }
+
+    <span class="pl-k">return</span> <span class="pl-c1">true</span>
+}</pre></div>
+
+<h3>
+<a id="how-to-install" class="anchor" href="#how-to-install" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How to install?</h3>
+
+<h4>
+<a id="carthage" class="anchor" href="#carthage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Carthage</h4>
+
+<pre lang="ogdl"><code>github "146BC/StyleKit" ~&gt; 0.3
+</code></pre>
+
+<h4>
+<a id="cocoapods" class="anchor" href="#cocoapods" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CocoaPods</h4>
+
+<p>Add the 146BC Source</p>
+
+<div class="highlight highlight-source-ruby"><pre>source <span class="pl-s"><span class="pl-pds">'</span>https://github.com/146BC/Specs.git<span class="pl-pds">'</span></span>
+source <span class="pl-s"><span class="pl-pds">'</span>https://github.com/CocoaPods/Specs.git<span class="pl-pds">'</span></span></pre></div>
+
+<div class="highlight highlight-source-ruby"><pre>pod <span class="pl-s"><span class="pl-pds">'</span>StyleKit<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>~&gt; 0.3<span class="pl-pds">'</span></span></pre></div>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/146BC">146BC</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
