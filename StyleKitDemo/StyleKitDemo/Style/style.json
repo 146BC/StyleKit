@@ -70,7 +70,15 @@
         }
     },
     "UISegmentedControl": {
-        "tintColor": "#000"
+        "tintColor": "#cd0073",
+        "titleTextAttributes:normal": {
+            "NSColor": "#999",
+            "NSFont": "HelveticaNeue-Light:15.0"
+        },
+        "titleTextAttributes:selected": {
+            "NSColor": "#000",
+            "NSFont": "HelveticaNeue-Medium:15.0"
+        }
     },
     "UIActivityIndicatorView": {
         "color": "#cd0073"
