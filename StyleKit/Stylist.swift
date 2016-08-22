@@ -19,7 +19,7 @@ class Stylist {
         SKTryCatch.tryBlock( {
             self.validateAndApply(self.data)
         }, catchBlock: { exception in
-            XCGLogger.defaultInstance().severe("There was an error while applying styles: \(exception)")
+            XCGLogger.severe("There was an error while applying styles: \(exception)")
         }, finallyBlock: nil)
     }
     
@@ -40,7 +40,7 @@ class Stylist {
                 if let currentComponent = self.currentComponent {
                     applyStyle(key, object: value, currentComponent: currentComponent)
                 } else {
-                    XCGLogger.defaultInstance().error("Style \(value) not applied on \(key) for \(self.currentComponent.debugDescription)")
+                    XCGLogger.error("Style \(value) not applied on \(key) for \(self.currentComponent.debugDescription)")
                 }
                 
             }
@@ -49,10 +49,10 @@ class Stylist {
     
     private func selectCurrentComponent(name: String) -> Bool {
         
-        XCGLogger.defaultInstance().debug("Switching to: \(name)")
+        XCGLogger.debug("Switching to: \(name)")
         
         guard let currentComponent = NSClassFromString(name) else {
-            XCGLogger.defaultInstance().debug("Component \(name) cannot be selected")
+            XCGLogger.debug("Component \(name) cannot be selected")
             return false
         }
         self.currentComponent = currentComponent
@@ -71,7 +71,7 @@ class Stylist {
             state = nil
         }
         
-        XCGLogger.defaultInstance().debug("Applying: \(selectorName) on level \(self.viewStack.count)")
+        XCGLogger.debug("Applying: \(selectorName) on level \(self.viewStack.count)")
         if let styles = object as? Stylist.Style {
             var stylesToApply = Stylist.Style()
             for (style, value) in styles {

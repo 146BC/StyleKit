@@ -10,7 +10,7 @@ public struct FontHelper {
                 if let font = UIFont(name: fontString.first!, size: size) {
                     return font
                 } else {
-                    XCGLogger.defaultInstance().error("Font \(font) not found, using system font.")
+                    XCGLogger.error("Font \(font) not found, using system font.")
                     return UIFont.systemFontOfSize(size)
                 }
             } else {

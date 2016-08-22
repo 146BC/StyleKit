@@ -16,7 +16,7 @@ class FileLoader {
                     return dictionary
                 }
             } catch {
-                XCGLogger.defaultInstance().severe("Issue parsing StyleKit JSON file: \(self.jsonFile)" )
+                XCGLogger.severe("Issue parsing StyleKit JSON file: \(self.jsonFile)" )
             }
         }
         return nil
