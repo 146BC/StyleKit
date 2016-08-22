@@ -64,21 +64,9 @@ public struct XCGLogDetails {
     }
 }
 
-// MARK: - XCGLogDestinationProtocol
-// - Protocol for output classes to conform to
-public protocol XCGLogDestinationProtocol: CustomDebugStringConvertible {
-    var owner: XCGLogger {get set}
-    var identifier: String {get set}
-    var outputLogLevel: LogLevel {get set}
-
-    func processLogDetails(logDetails: XCGLogDetails)
-    func processInternalLogDetails(logDetails: XCGLogDetails) // Same as processLogDetails but should omit function/file/line info
-    func isEnabledForLogLevel(logLevel: LogLevel) -> Bool
-}
-
-// MARK: - XCGBaseLogDestination
-// - A base class log destination that doesn't actually output the log anywhere and is intented to be subclassed
-public class XCGBaseLogDestination: XCGLogDestinationProtocol, CustomDebugStringConvertible {
+// MARK: - XCGConsoleLogDestination
+// - A standard log destination that outputs log details to the console
+public class XCGConsoleLogDestination: CustomDebugStringConvertible {
     // MARK: - Properties
     public var owner: XCGLogger
     public var identifier: String
@@ -91,6 +79,8 @@ public class XCGBaseLogDestination: XCGLogDestinationProtocol, CustomDebugString
     public var showLineNumber: Bool = true
     public var showLogLevel: Bool = true
     public var showDate: Bool = true
+
+    public var logQueue: dispatch_queue_t? = nil
 
     // MARK: - CustomDebugStringConvertible
     public var debugDescription: String {
@@ -192,22 +182,8 @@ public class XCGBaseLogDestination: XCGLogDestinationProtocol, CustomDebugString
         return logLevel >= self.outputLogLevel
     }
 
-    // MARK: - Methods that must be overriden in subclasses
+    // MARK: - Output
     public func output(logDetails: XCGLogDetails, text: String) {
-        // Do something with the text in an overridden version of this method
-        precondition(false, "Must override this")
-    }
-}
-
-// MARK: - XCGConsoleLogDestination
-// - A standard log destination that outputs log details to the console
-public class XCGConsoleLogDestination: XCGBaseLogDestination {
-    // MARK: - Properties
-    public var logQueue: dispatch_queue_t? = nil
-
-    // MARK: - Misc Methods
-    public override func output(logDetails: XCGLogDetails, text: String) {
-
         let outputClosure = {
             print(text)
         }
@@ -228,7 +204,6 @@ public class XCGLogger: CustomDebugStringConvertible {
     public struct Constants {
         public static let defaultInstanceIdentifier = "com.cerebralgardens.xcglogger.defaultInstance"
         public static let baseConsoleLogDestinationIdentifier = "com.cerebralgardens.xcglogger.logdestination.console"
-        public static let nslogDestinationIdentifier = "com.cerebralgardens.xcglogger.logdestination.console.nslog"
         public static let logQueueIdentifier = "com.cerebralgardens.xcglogger.queue"
         public static let nsdataFormatterCacheIdentifier = "com.cerebralgardens.xcglogger.nsdataFormatterCache"
         public static let versionString = "3.4"
@@ -239,9 +214,7 @@ public class XCGLogger: CustomDebugStringConvertible {
     public var identifier: String = ""
     public var outputLogLevel: LogLevel = .Debug {
         didSet {
-            for index in 0 ..< logDestinations.count {
-                logDestinations[index].outputLogLevel = outputLogLevel
-            }
+            logDestination.outputLogLevel = outputLogLevel
         }
     }
 
@@ -273,16 +246,12 @@ public class XCGLogger: CustomDebugStringConvertible {
         }
     }
 
-    public var logDestinations: [XCGLogDestinationProtocol] = []
+    public lazy var logDestination: XCGConsoleLogDestination =
+        XCGConsoleLogDestination(owner: self, identifier: XCGLogger.Constants.baseConsoleLogDestinationIdentifier)
 
     // MARK: - Life Cycle
-    public init(identifier: String = "", includeDefaultDestinations: Bool = true) {
+    public init(identifier: String = "") {
         self.identifier = identifier
-
-        if includeDefaultDestinations {
-            // Setup a standard console log destination
-            addLogDestination(XCGConsoleLogDestination(owner: self, identifier: XCGLogger.Constants.baseConsoleLogDestinationIdentifier))
-        }
     }
 
     // MARK: - Default instance
@@ -302,17 +271,14 @@ public class XCGLogger: CustomDebugStringConvertible {
     public func setup(logLevel: LogLevel = .Debug, showLogIdentifier: Bool = false, showFunctionName: Bool = true, showThreadName: Bool = false, showLogLevel: Bool = true, showFileNames: Bool = true, showLineNumbers: Bool = true, showDate: Bool = true) {
         outputLogLevel = logLevel;
 
-        if let standardConsoleLogDestination = logDestination(XCGLogger.Constants.baseConsoleLogDestinationIdentifier) as? XCGConsoleLogDestination {
-            standardConsoleLogDestination.showLogIdentifier = showLogIdentifier
-            standardConsoleLogDestination.showFunctionName = showFunctionName
-            standardConsoleLogDestination.showThreadName = showThreadName
-            standardConsoleLogDestination.showLogLevel = showLogLevel
-            standardConsoleLogDestination.showFileName = showFileNames
-            standardConsoleLogDestination.showLineNumber = showLineNumbers
-            standardConsoleLogDestination.showDate = showDate
-            standardConsoleLogDestination.outputLogLevel = logLevel
-        }
-
+        logDestination.showLogIdentifier = showLogIdentifier
+        logDestination.showFunctionName = showFunctionName
+        logDestination.showThreadName = showThreadName
+        logDestination.showLogLevel = showLogLevel
+        logDestination.showFileName = showFileNames
+        logDestination.showLineNumber = showLineNumbers
+        logDestination.showDate = showDate
+        logDestination.outputLogLevel = logLevel
     }
 
     // MARK: - Logging methods
@@ -330,21 +296,21 @@ public class XCGLogger: CustomDebugStringConvertible {
 
     public func logln(logLevel: LogLevel = .Debug, functionName: StaticString = #function, fileName: StaticString = #file, lineNumber: Int = #line, @noescape closure: () -> String?) {
         var logDetails: XCGLogDetails!
-        for logDestination in self.logDestinations {
-            guard logDestination.isEnabledForLogLevel(logLevel) else {
-                continue
-            }
 
-            if logDetails == nil {
-                guard let logMessage = closure() else {
-                    break
-                }
-
-                logDetails = XCGLogDetails(logLevel: logLevel, date: NSDate(), logMessage: logMessage, functionName: functionName, fileName: fileName, lineNumber: lineNumber)
-            }
-
-            logDestination.processLogDetails(logDetails)
+        guard logDestination.isEnabledForLogLevel(logLevel) else {
+         return
         }
+
+        if logDetails == nil {
+            guard let logMessage = closure() else {
+                return
+            }
+
+            logDetails = XCGLogDetails(logLevel: logLevel, date: NSDate(), logMessage: logMessage, functionName: functionName, fileName: fileName, lineNumber: lineNumber)
+        }
+
+        logDestination.processLogDetails(logDetails)
+
     }
 
     public class func exec(logLevel: LogLevel = .Debug, closure: () -> () = {}) {
@@ -355,7 +321,6 @@ public class XCGLogger: CustomDebugStringConvertible {
         guard isEnabledForLogLevel(logLevel) else {
             return
         }
-
         closure()
     }
 
@@ -523,57 +488,25 @@ public class XCGLogger: CustomDebugStringConvertible {
         return logLevel >= self.outputLogLevel
     }
 
-    public func logDestination(identifier: String) -> XCGLogDestinationProtocol? {
-        for logDestination in logDestinations {
-            if logDestination.identifier == identifier {
-                return logDestination
-            }
-        }
-
-        return nil
-    }
-
-    public func addLogDestination(logDestination: XCGLogDestinationProtocol) -> Bool {
-        let existingLogDestination: XCGLogDestinationProtocol? = self.logDestination(logDestination.identifier)
-        if existingLogDestination != nil {
-            return false
-        }
-
-        logDestinations.append(logDestination)
-        return true
-    }
-
-    public func removeLogDestination(logDestination: XCGLogDestinationProtocol) {
-        removeLogDestination(logDestination.identifier)
-    }
-
-    public func removeLogDestination(identifier: String) {
-        logDestinations = logDestinations.filter({$0.identifier != identifier})
-    }
-
     // MARK: - Private methods
     private func _logln(logMessage: String, logLevel: LogLevel = .Debug) {
 
         var logDetails: XCGLogDetails? = nil
-        for logDestination in self.logDestinations {
-            if (logDestination.isEnabledForLogLevel(logLevel)) {
-                if logDetails == nil {
-                    logDetails = XCGLogDetails(logLevel: logLevel, date: NSDate(), logMessage: logMessage, functionName: "", fileName: "", lineNumber: 0)
-                }
-                
-                logDestination.processInternalLogDetails(logDetails!)
+        if (logDestination.isEnabledForLogLevel(logLevel)) {
+            if logDetails == nil {
+                logDetails = XCGLogDetails(logLevel: logLevel, date: NSDate(), logMessage: logMessage, functionName: "", fileName: "", lineNumber: 0)
             }
+            
+            logDestination.processInternalLogDetails(logDetails!)
         }
     }
-    
+
+
     // MARK: - DebugPrintable
     public var debugDescription: String {
         get {
-            var description: String = "\(extractClassName(self)): \(identifier) - logDestinations: \r"
-            for logDestination in logDestinations {
-                description += "\t \(logDestination.debugDescription)\r"
-            }
-            
+            var description: String = "\(extractClassName(self)): \(identifier) - logDestination: \r"
+            description += "\t \(logDestination.debugDescription)\r"
             return description
         }
     }
