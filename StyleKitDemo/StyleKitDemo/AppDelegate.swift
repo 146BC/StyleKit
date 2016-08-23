@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             //StyleKit(fileUrl: styleFile, styleParser: StyleParser())?.apply()
             
             // Uses default style parser
-            StyleKit(fileUrl: styleFile)?.apply()
+            StyleKit(fileUrl: styleFile, logLevel: .Debug)?.apply()
             
         }
         
