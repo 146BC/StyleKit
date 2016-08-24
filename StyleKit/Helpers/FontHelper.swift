@@ -10,7 +10,7 @@ public struct FontHelper {
                 if let font = UIFont(name: fontString.first!, size: size) {
                     return font
                 } else {
-                    loggingPrint("Font not found, using system font.")
+                    SKLogger.error("Font \(font) not found, using system font.")
                     return UIFont.systemFontOfSize(size)
                 }
             } else {

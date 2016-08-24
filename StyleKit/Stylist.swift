@@ -19,7 +19,7 @@ class Stylist {
         SKTryCatch.tryBlock( {
             self.validateAndApply(self.data)
         }, catchBlock: { exception in
-            loggingPrint("There was an error while applying styles: \(exception)")
+            SKLogger.severe("There was an error while applying styles: \(exception)")
         }, finallyBlock: nil)
     }
     
@@ -40,7 +40,7 @@ class Stylist {
                 if let currentComponent = self.currentComponent {
                     applyStyle(key, object: value, currentComponent: currentComponent)
                 } else {
-                    loggingPrint("Style \(value) not applied on \(key) for \(currentComponent.debugDescription)")
+                    SKLogger.error("Style \(value) not applied on \(key) for \(self.currentComponent.debugDescription)")
                 }
                 
             }
@@ -49,10 +49,10 @@ class Stylist {
     
     private func selectCurrentComponent(name: String) -> Bool {
         
-        loggingPrint("Switching to: \(name)")
+        SKLogger.debug("Switching to: \(name)")
         
         guard let currentComponent = NSClassFromString(name) else {
-            loggingPrint("Component \(name) cannot be selected")
+            SKLogger.debug("Component \(name) cannot be selected")
             return false
         }
         self.currentComponent = currentComponent
@@ -71,7 +71,7 @@ class Stylist {
             state = nil
         }
         
-        loggingPrint("Applying: \(selectorName) on level \(viewStack.count)")
+        SKLogger.debug("Applying: \(selectorName) on level \(self.viewStack.count)")
         if let styles = object as? Stylist.Style {
             var stylesToApply = Stylist.Style()
             for (style, value) in styles {
