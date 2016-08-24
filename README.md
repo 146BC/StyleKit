@@ -138,7 +138,7 @@ The levels of logging are:
 ####Carthage
 
 ```ogdl
-github "146BC/StyleKit" ~> 0.3
+github "146BC/StyleKit" ~> 0.4
 ```
 
 ####CocoaPods
@@ -151,5 +151,5 @@ source 'https://github.com/CocoaPods/Specs.git'
 ```
 
 ```ruby
-pod 'StyleKit', '~> 0.3'
+pod 'StyleKit', '~> 0.4'
 ```
