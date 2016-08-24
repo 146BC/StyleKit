@@ -117,6 +117,22 @@ func application(application: UIApplication,
 }
 ```
 
+###Logging###
+
+By default, StyleKit will log any errors to the console. To customise the level of logging, you can pass a logLevel parameter as follows:
+
+```swift
+StyleKit(fileUrl: styleFile, logLevel: .Debug)?.apply()
+```
+
+The levels of logging are:
+
+* ```.Debug```
+* ```.Error``` (This is the default log level)
+* ```.Severe```
+* ```.None```
+
+
 ###How to install?
 
 ####Carthage
