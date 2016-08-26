@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "StyleKit"
-  s.version      = "0.3.0"
+  s.version      = "0.4.1"
   s.summary      = "A powerful & easy to use styling framework written in Swift."
 
   s.description  = "StyleKit is a microframework that enables you to style your applications using a simple JSON file. Behind the scenes, StyleKit uses UIAppearance and some selector magic to apply the styles. You can also customize the parser for greater flexibility."
