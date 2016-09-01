@@ -90,11 +90,10 @@
 			isa = PBXGroup;
 			children = (
 				A104CE181D57E1AB00626F2A /* CustomViews */,
+				A1A7FDD71D7815B900D42F87 /* Views */,
 				A104CE151D57DD0600626F2A /* Style */,
 				A104CE031D57DCD500626F2A /* AppDelegate.swift */,
-				A104CE051D57DCD500626F2A /* ViewController.swift */,
 				A104CE071D57DCD500626F2A /* Main.storyboard */,
-				A1A7FDD51D780EDC00D42F87 /* StylePreviewerViewController.swift */,
 				A104CE0A1D57DCD500626F2A /* Assets.xcassets */,
 				A104CE0C1D57DCD500626F2A /* LaunchScreen.storyboard */,
 				A104CE0F1D57DCD500626F2A /* Info.plist */,
@@ -129,6 +128,15 @@
 				059932E71D5B244C0085E522 /* StyleKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A1A7FDD71D7815B900D42F87 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A104CE051D57DCD500626F2A /* ViewController.swift */,
+				A1A7FDD51D780EDC00D42F87 /* StylePreviewerViewController.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
