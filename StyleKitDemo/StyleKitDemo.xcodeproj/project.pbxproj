@@ -20,6 +20,7 @@
 		A104CE1E1D57E23C00626F2A /* SKLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A104CE1D1D57E23C00626F2A /* SKLabel.swift */; };
 		A104CE201D57E25E00626F2A /* SKTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A104CE1F1D57E25E00626F2A /* SKTextField.swift */; };
 		A104CE411D57FEDB00626F2A /* SKNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A104CE401D57FEDB00626F2A /* SKNavigationBar.swift */; };
+		A1A7FDD61D780EDC00D42F87 /* StylePreviewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A7FDD51D780EDC00D42F87 /* StylePreviewerViewController.swift */; };
 		A1C515681D5A72CF0016BF1E /* StyleParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C515671D5A72CF0016BF1E /* StyleParser.swift */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +53,7 @@
 		A104CE1D1D57E23C00626F2A /* SKLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SKLabel.swift; path = CustomViews/SKLabel.swift; sourceTree = "<group>"; };
 		A104CE1F1D57E25E00626F2A /* SKTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SKTextField.swift; path = CustomViews/SKTextField.swift; sourceTree = "<group>"; };
 		A104CE401D57FEDB00626F2A /* SKNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SKNavigationBar.swift; path = CustomViews/SKNavigationBar.swift; sourceTree = "<group>"; };
+		A1A7FDD51D780EDC00D42F87 /* StylePreviewerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StylePreviewerViewController.swift; sourceTree = "<group>"; };
 		A1C515671D5A72CF0016BF1E /* StyleParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StyleParser.swift; path = Style/StyleParser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -92,6 +94,7 @@
 				A104CE031D57DCD500626F2A /* AppDelegate.swift */,
 				A104CE051D57DCD500626F2A /* ViewController.swift */,
 				A104CE071D57DCD500626F2A /* Main.storyboard */,
+				A1A7FDD51D780EDC00D42F87 /* StylePreviewerViewController.swift */,
 				A104CE0A1D57DCD500626F2A /* Assets.xcassets */,
 				A104CE0C1D57DCD500626F2A /* LaunchScreen.storyboard */,
 				A104CE0F1D57DCD500626F2A /* Info.plist */,
@@ -209,6 +212,7 @@
 				A104CE1E1D57E23C00626F2A /* SKLabel.swift in Sources */,
 				A104CE1C1D57E22000626F2A /* SKButton.swift in Sources */,
 				A104CE201D57E25E00626F2A /* SKTextField.swift in Sources */,
+				A1A7FDD61D780EDC00D42F87 /* StylePreviewerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
