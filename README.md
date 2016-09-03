@@ -102,10 +102,11 @@ class StyleParser: StyleParsable {
     }
 }
 ```
+*AppDelegate.swift steps to install*
+1. Add `import StyleKit` before the `class AppDelegate` line in your `AppDelegate.swift`
+2. Enter in the below code into your `AppDelegate.swift` file
 
-*AppDelegate.swift*
-
-```swift
+```
 func application(application: UIApplication,
                  didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
@@ -153,3 +154,9 @@ source 'https://github.com/CocoaPods/Specs.git'
 ```ruby
 pod 'StyleKit', '~> 0.4'
 ```
+
+###How to build the demo Project. 
+1. Download this project. 
+2. Open up `Stylekit.xcworkspace' (the one with the white xcode icon)
+3. Update the build target to say "StylekitDemo" and choose the phone simulator / device you want to run it on. 
+4. Run your project. 
