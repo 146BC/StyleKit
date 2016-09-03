@@ -9,7 +9,7 @@
     "UITableView": {
         "UITableViewCell": {
             "UILabel": {
-                "font": "HelveticaNeue-Medium:13.0",
+                "font": "HelveticaNeue-Medium:15.0",
                 "color": "#000"
             }
         }
@@ -37,10 +37,6 @@
         "font": "HelveticaNeue-Light:17.0",
         "color": "#cd0073"
     },
-    "UILabel": {
-        "font": "HelveticaNeue-Bold:15.0",
-        "color": "#8000c6"
-    },
     "UIScrollView": {
         "UILabel": {
             "font": "HelveticaNeue-Light:15.0",
@@ -53,14 +49,6 @@
                 "padding": [0,30,0,0],
                 "backgroundColor": "#eee"
             }
-        }
-    },
-    "UITextField": {
-        "font": "HelveticaNeue-Light:15.0",
-        "textColor": "#000",
-        "UILabel": {
-            "font": "HelveticaNeue-Medium:15.0",
-            "color": "#000"
         }
     },
     "StyleKitDemo.SKTextField": {
