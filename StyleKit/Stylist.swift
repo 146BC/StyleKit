@@ -37,12 +37,15 @@ class Stylist {
                 }
             }
             else {
-                if let currentComponent = self.currentComponent {
-                    applyStyle(key, object: value, currentComponent: currentComponent)
-                } else {
-                    SKLogger.error("Style \(value) not applied on \(key) for \(self.currentComponent.debugDescription)")
-                }
-                
+                SKTryCatch.tryBlock( {
+                    if let currentComponent = self.currentComponent {
+                        self.applyStyle(key, object: value, currentComponent: currentComponent)
+                    } else {
+                        SKLogger.error("Style \(value) not applied on \(key) for \(self.currentComponent.debugDescription)")
+                    }
+                }, catchBlock: { exception in
+                    SKLogger.error("Style \(value) not applied on \(key) for \(self.currentComponent.debugDescription) Error \(exception)")
+                }, finallyBlock: nil)
             }
         }
     }
