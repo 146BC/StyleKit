@@ -39,7 +39,6 @@ class StylePreviewerViewController: UIViewController, UIPickerViewDataSource, UI
     }
     
     func _DidSelectFontfromPicker(fontfamilyname:String) {
-        let selectedFont = picker_FontSelector.selectedRowInComponent(0)
         lbl_textPreview.font = UIFont(name: fontfamilyname, size: 18)
         lbl_textPreview.hidden = false
         tf_SelectFont.text = fontfamilyname
