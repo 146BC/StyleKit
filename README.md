@@ -138,18 +138,5 @@ The levels of logging are:
 ####Carthage
 
 ```ogdl
-github "146BC/StyleKit" ~> 0.4
-```
-
-####CocoaPods
-
-Add the 146BC Source
-
-```ruby
-source 'https://github.com/146BC/Specs.git'
-source 'https://github.com/CocoaPods/Specs.git'
-```
-
-```ruby
-pod 'StyleKit', '~> 0.4'
+github "146BC/StyleKit" "feature/swift3"
 ```
