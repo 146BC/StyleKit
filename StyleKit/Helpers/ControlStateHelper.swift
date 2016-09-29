@@ -2,19 +2,19 @@ import Foundation
 
 struct ControlStateHelper {
     
-    static func parseControlState(state: String) -> UInt {
+    static func parseControlState(_ state: String) -> UInt {
         
         switch state {
-        case "normal": return UIControlState.Normal.rawValue
-        case "highlighted": return UIControlState.Highlighted.rawValue
-        case "disabled": return UIControlState.Disabled.rawValue
-        case "selected": return UIControlState.Selected.rawValue
+        case "normal": return UIControlState().rawValue
+        case "highlighted": return UIControlState.highlighted.rawValue
+        case "disabled": return UIControlState.disabled.rawValue
+        case "selected": return UIControlState.selected.rawValue
         case "focused":
-            if #available(iOS 9.0, *) { return UIControlState.Focused.rawValue }
-            else { return UIControlState.Highlighted.rawValue }
-        case "application": return UIControlState.Application.rawValue
-        case "reserved": return UIControlState.Reserved.rawValue
-        default: return UIControlState.Normal.rawValue
+            if #available(iOS 9.0, *) { return UIControlState.focused.rawValue }
+            else { return UIControlState.highlighted.rawValue }
+        case "application": return UIControlState.application.rawValue
+        case "reserved": return UIControlState.reserved.rawValue
+        default: return UIControlState().rawValue
         }
         
     }

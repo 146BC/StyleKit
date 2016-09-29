@@ -14,20 +14,20 @@ import Foundation
 
 /// Log Level
 public enum SKLogLevel: Int, Comparable, CustomStringConvertible {
-    case Debug
-    case Error
-    case Severe
-    case None
+    case debug
+    case error
+    case severe
+    case none
 
     public var description: String {
         switch self {
-        case .Debug:
+        case .debug:
             return "Debug"
-        case .Error:
+        case .error:
             return "Error"
-        case .Severe:
+        case .severe:
             return "Severe"
-        case .None:
+        case .none:
             return "None"
         }
     }
@@ -43,18 +43,18 @@ public func < (lhs:SKLogLevel, rhs:SKLogLevel) -> Bool {
 // - Data structure to hold all info about a log message, passed to log destination classes
 internal struct SKLogDetails {
     var logLevel: SKLogLevel
-    var date: NSDate
+    var date: Date
     var logMessage: String
     var functionName: String
     var fileName: String
     var lineNumber: Int
 
-    init(logLevel: SKLogLevel, date: NSDate, logMessage: String, functionName: StaticString, fileName: StaticString, lineNumber: Int) {
+    init(logLevel: SKLogLevel, date: Date, logMessage: String, functionName: StaticString, fileName: StaticString, lineNumber: Int) {
         self.logLevel = logLevel
         self.date = date
         self.logMessage = logMessage
-        self.functionName = String(functionName)
-        self.fileName = String(fileName)
+        self.functionName = String(describing: functionName)
+        self.fileName = String(describing: fileName)
         self.lineNumber = lineNumber
     }
 }
@@ -64,7 +64,7 @@ internal struct SKLogDetails {
 internal class SKConsoleLogDestination: CustomDebugStringConvertible {
     // MARK: - Properties
     var owner: SKLogger
-    var outputSKLogLevel: SKLogLevel = .Debug
+    var outputSKLogLevel: SKLogLevel = .debug
 
     var showFunctionName: Bool = true
     var showThreadName: Bool = false
@@ -73,7 +73,7 @@ internal class SKConsoleLogDestination: CustomDebugStringConvertible {
     var showSKLogLevel: Bool = true
     var showDate: Bool = true
 
-    var logQueue: dispatch_queue_t? = nil
+    var logQueue: DispatchQueue? = nil
 
     // MARK: - CustomDebugStringConvertible
     var debugDescription: String {
@@ -88,13 +88,13 @@ internal class SKConsoleLogDestination: CustomDebugStringConvertible {
     }
 
     // MARK: - Methods to Process Log Details
-    func processLogDetails(logDetails: SKLogDetails) {
+    func processLogDetails(_ logDetails: SKLogDetails) {
         var extendedDetails: String = ""
 
         if showDate {
             var formattedDate: String = logDetails.date.description
             if let dateFormatter = owner.dateFormatter {
-                formattedDate = dateFormatter.stringFromDate(logDetails.date)
+                formattedDate = dateFormatter.string(from: logDetails.date)
             }
 
             // extendedDetails += "\(formattedDate) " // Note: Leaks in Swift versions prior to Swift 3
@@ -106,18 +106,19 @@ internal class SKConsoleLogDestination: CustomDebugStringConvertible {
         }
 
         if showThreadName {
-            if NSThread.isMainThread() {
+            if Thread.isMainThread {
                 extendedDetails += "[main] "
             }
             else {
-                if let threadName = NSThread.currentThread().name where !threadName.isEmpty {
+                
+                if let threadName = Thread.current.name , !threadName.isEmpty {
                     extendedDetails += "[" + threadName + "] "
                 }
-                else if let queueName = String(UTF8String: dispatch_queue_get_label(DISPATCH_CURRENT_QUEUE_LABEL)) where !queueName.isEmpty {
+                else if let queueName = String(validatingUTF8: logQueue!.label) , !queueName.isEmpty {
                     extendedDetails += "[" + queueName + "] "
                 }
                 else {
-                    extendedDetails += "[" + String(format: "%p", NSThread.currentThread()) + "] "
+                    extendedDetails += "[" + String(format: "%p", Thread.current) + "] "
                 }
             }
         }
@@ -138,13 +139,13 @@ internal class SKConsoleLogDestination: CustomDebugStringConvertible {
         output(logDetails, text: extendedDetails + "> " + logDetails.logMessage)
     }
 
-    func processInternalLogDetails(logDetails: SKLogDetails) {
+    func processInternalLogDetails(_ logDetails: SKLogDetails) {
         var extendedDetails: String = ""
 
         if showDate {
             var formattedDate: String = logDetails.date.description
             if let dateFormatter = owner.dateFormatter {
-                formattedDate = dateFormatter.stringFromDate(logDetails.date)
+                formattedDate = dateFormatter.string(from: logDetails.date)
             }
 
             // extendedDetails += "\(formattedDate) " // Note: Leaks in Swift versions prior to Swift 3
@@ -160,18 +161,18 @@ internal class SKConsoleLogDestination: CustomDebugStringConvertible {
     }
 
     // MARK: - Misc methods
-    func isEnabledForSKLogLevel (logLevel: SKLogLevel) -> Bool {
+    func isEnabledForSKLogLevel (_ logLevel: SKLogLevel) -> Bool {
         return logLevel >= self.outputSKLogLevel
     }
 
     // MARK: - Output
-    func output(logDetails: SKLogDetails, text: String) {
+    func output(_ logDetails: SKLogDetails, text: String) {
         let outputClosure = {
             print(text)
         }
 
         if let logQueue = logQueue {
-            dispatch_async(logQueue, outputClosure)
+            logQueue.async(execute: outputClosure)
         }
         else {
             outputClosure()
@@ -188,30 +189,30 @@ internal class SKLogger: CustomDebugStringConvertible {
     }
 
     // MARK: - Properties (Options)
-    var outputSKLogLevel: SKLogLevel = .Debug {
+    var outputSKLogLevel: SKLogLevel = .debug {
         didSet {
             logDestination.outputSKLogLevel = outputSKLogLevel
         }
     }
 
     // MARK: - Properties
-    class var logQueue: dispatch_queue_t {
+    class var logQueue: DispatchQueue {
         struct Statics {
-            static var logQueue = dispatch_queue_create(SKLogger.Constants.logQueueIdentifier, nil)
+            static var logQueue = DispatchQueue(label: SKLogger.Constants.logQueueIdentifier, attributes: [])
         }
 
         return Statics.logQueue
     }
 
-    private var _dateFormatter: NSDateFormatter? = nil
-    var dateFormatter: NSDateFormatter? {
+    fileprivate var _dateFormatter: DateFormatter? = nil
+    var dateFormatter: DateFormatter? {
         get {
             if _dateFormatter != nil {
                 return _dateFormatter
             }
 
-            let defaultDateFormatter = NSDateFormatter()
-            defaultDateFormatter.locale = NSLocale.currentLocale()
+            let defaultDateFormatter = DateFormatter()
+            defaultDateFormatter.locale = Locale.current
             defaultDateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss.SSS"
             _dateFormatter = defaultDateFormatter
 
@@ -234,11 +235,11 @@ internal class SKLogger: CustomDebugStringConvertible {
     }
 
     // MARK: - Setup methods
-    class func setup(logLevel: SKLogLevel = .Debug, showLogIdentifier: Bool = false, showFunctionName: Bool = true, showThreadName: Bool = false, showSKLogLevel: Bool = true, showFileNames: Bool = true, showLineNumbers: Bool = true, showDate: Bool = true) {
+    class func setup(_ logLevel: SKLogLevel = .debug, showLogIdentifier: Bool = false, showFunctionName: Bool = true, showThreadName: Bool = false, showSKLogLevel: Bool = true, showFileNames: Bool = true, showLineNumbers: Bool = true, showDate: Bool = true) {
         defaultInstance().setup(logLevel, showLogIdentifier: showLogIdentifier, showFunctionName: showFunctionName, showThreadName: showThreadName, showSKLogLevel: showSKLogLevel, showFileNames: showFileNames, showLineNumbers: showLineNumbers, showDate: showDate)
     }
 
-    func setup(logLevel: SKLogLevel = .Debug, showLogIdentifier: Bool = false, showFunctionName: Bool = true, showThreadName: Bool = false, showSKLogLevel: Bool = true, showFileNames: Bool = true, showLineNumbers: Bool = true, showDate: Bool = true) {
+    func setup(_ logLevel: SKLogLevel = .debug, showLogIdentifier: Bool = false, showFunctionName: Bool = true, showThreadName: Bool = false, showSKLogLevel: Bool = true, showFileNames: Bool = true, showLineNumbers: Bool = true, showDate: Bool = true) {
         outputSKLogLevel = logLevel;
 
         logDestination.showFunctionName = showFunctionName
@@ -251,19 +252,19 @@ internal class SKLogger: CustomDebugStringConvertible {
     }
 
     // MARK: - Logging methods
-    class func logln(@autoclosure(escaping) closure: () -> String?, logLevel: SKLogLevel = .Debug, functionName: StaticString = #function, fileName: StaticString = #file, lineNumber: Int = #line) {
+    class func logln( _ closure: @autoclosure @escaping () -> String?, logLevel: SKLogLevel = .debug, functionName: StaticString = #function, fileName: StaticString = #file, lineNumber: Int = #line) {
         self.defaultInstance().logln(logLevel, functionName: functionName, fileName: fileName, lineNumber: lineNumber, closure: closure)
     }
 
-    class func logln(logLevel: SKLogLevel = .Debug, functionName: StaticString = #function, fileName: StaticString = #file, lineNumber: Int = #line, closure: () -> String?) {
+    class func logln(_ logLevel: SKLogLevel = .debug, functionName: StaticString = #function, fileName: StaticString = #file, lineNumber: Int = #line, closure: () -> String?) {
         self.defaultInstance().logln(logLevel, functionName: functionName, fileName: fileName, lineNumber: lineNumber, closure: closure)
     }
 
-    func logln(@autoclosure(escaping) closure: () -> String?, logLevel: SKLogLevel = .Debug, functionName: StaticString = #function, fileName: StaticString = #file, lineNumber: Int = #line) {
+    func logln( _ closure: @autoclosure @escaping () -> String?, logLevel: SKLogLevel = .debug, functionName: StaticString = #function, fileName: StaticString = #file, lineNumber: Int = #line) {
         self.logln(logLevel, functionName: functionName, fileName: fileName, lineNumber: lineNumber, closure: closure)
     }
 
-    func logln(logLevel: SKLogLevel = .Debug, functionName: StaticString = #function, fileName: StaticString = #file, lineNumber: Int = #line, @noescape closure: () -> String?) {
+    func logln(_ logLevel: SKLogLevel = .debug, functionName: StaticString = #function, fileName: StaticString = #file, lineNumber: Int = #line, closure: () -> String?) {
         var logDetails: SKLogDetails!
 
         guard logDestination.isEnabledForSKLogLevel(logLevel) else {
@@ -275,18 +276,18 @@ internal class SKLogger: CustomDebugStringConvertible {
                 return
             }
 
-            logDetails = SKLogDetails(logLevel: logLevel, date: NSDate(), logMessage: logMessage, functionName: functionName, fileName: fileName, lineNumber: lineNumber)
+            logDetails = SKLogDetails(logLevel: logLevel, date: Date(), logMessage: logMessage, functionName: functionName, fileName: fileName, lineNumber: lineNumber)
         }
 
         logDestination.processLogDetails(logDetails)
 
     }
 
-    class func exec(logLevel: SKLogLevel = .Debug, closure: () -> () = {}) {
+    class func exec(_ logLevel: SKLogLevel = .debug, closure: () -> () = {}) {
         self.defaultInstance().exec(logLevel, closure: closure)
     }
 
-    func exec(logLevel: SKLogLevel = .Debug, closure: () -> () = {}) {
+    func exec(_ logLevel: SKLogLevel = .debug, closure: () -> () = {}) {
         guard isEnabledForSKLogLevel(logLevel) else {
             return
         }
@@ -294,48 +295,48 @@ internal class SKLogger: CustomDebugStringConvertible {
     }
 
     // MARK: * Debug
-    class func debug(@autoclosure(escaping) closure: () -> String?, functionName: StaticString = #function, fileName: StaticString = #file, lineNumber: Int = #line) {
-        self.defaultInstance().logln(.Debug, functionName: functionName, fileName: fileName, lineNumber: lineNumber, closure: closure)
+    class func debug( _ closure: @autoclosure @escaping () -> String?, functionName: StaticString = #function, fileName: StaticString = #file, lineNumber: Int = #line) {
+        self.defaultInstance().logln(.debug, functionName: functionName, fileName: fileName, lineNumber: lineNumber, closure: closure)
     }
 
 
     // MARK: * Error
-    class func error(@autoclosure(escaping) closure: () -> String?, functionName: StaticString = #function, fileName: StaticString = #file, lineNumber: Int = #line) {
-        self.defaultInstance().logln(.Error, functionName: functionName, fileName: fileName, lineNumber: lineNumber, closure: closure)
+    class func error( _ closure: @autoclosure @escaping () -> String?, functionName: StaticString = #function, fileName: StaticString = #file, lineNumber: Int = #line) {
+        self.defaultInstance().logln(.error, functionName: functionName, fileName: fileName, lineNumber: lineNumber, closure: closure)
     }
 
     // MARK: * Severe
-    class func severe(@autoclosure(escaping) closure: () -> String?, functionName: StaticString = #function, fileName: StaticString = #file, lineNumber: Int = #line) {
-        self.defaultInstance().logln(.Severe, functionName: functionName, fileName: fileName, lineNumber: lineNumber, closure: closure)
+    class func severe( _ closure: @autoclosure @escaping () -> String?, functionName: StaticString = #function, fileName: StaticString = #file, lineNumber: Int = #line) {
+        self.defaultInstance().logln(.severe, functionName: functionName, fileName: fileName, lineNumber: lineNumber, closure: closure)
     }
 
     // MARK: * Debug
-    class func debugExec(closure: () -> () = {}) {
-        self.defaultInstance().exec(SKLogLevel.Debug, closure: closure)
+    class func debugExec(_ closure: () -> () = {}) {
+        self.defaultInstance().exec(SKLogLevel.debug, closure: closure)
     }
 
     // MARK: * Error
-    class func errorExec(closure: () -> () = {}) {
-        self.defaultInstance().exec(SKLogLevel.Error, closure: closure)
+    class func errorExec(_ closure: () -> () = {}) {
+        self.defaultInstance().exec(SKLogLevel.error, closure: closure)
     }
 
     // MARK: * Severe
-    class func severeExec(closure: () -> () = {}) {
-        self.defaultInstance().exec(SKLogLevel.Severe, closure: closure)
+    class func severeExec(_ closure: () -> () = {}) {
+        self.defaultInstance().exec(SKLogLevel.severe, closure: closure)
     }
 
     // MARK: - Misc methods
-    func isEnabledForSKLogLevel (logLevel: SKLogLevel) -> Bool {
+    func isEnabledForSKLogLevel (_ logLevel: SKLogLevel) -> Bool {
         return logLevel >= self.outputSKLogLevel
     }
 
     // MARK: - Private methods
-    private func _logln(logMessage: String, logLevel: SKLogLevel = .Debug) {
+    fileprivate func _logln(_ logMessage: String, logLevel: SKLogLevel = .debug) {
 
         var logDetails: SKLogDetails? = nil
         if (logDestination.isEnabledForSKLogLevel(logLevel)) {
             if logDetails == nil {
-                logDetails = SKLogDetails(logLevel: logLevel, date: NSDate(), logMessage: logMessage, functionName: "", fileName: "", lineNumber: 0)
+                logDetails = SKLogDetails(logLevel: logLevel, date: Date(), logMessage: logMessage, functionName: "", fileName: "", lineNumber: 0)
             }
 
             logDestination.processInternalLogDetails(logDetails!)
@@ -353,6 +354,6 @@ internal class SKLogger: CustomDebugStringConvertible {
     }
 }
 
-func extractClassName(someObject: Any) -> String {
-    return (someObject is Any.Type) ? "\(someObject)" : "\(someObject.dynamicType)"
+func extractClassName(_ someObject: Any) -> String {
+    return (someObject is Any.Type) ? "\(someObject)" : "\(type(of: (someObject) as AnyObject))"
 }

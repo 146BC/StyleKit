@@ -23,25 +23,25 @@ class HelperTests: XCTestCase {
     func testControlStateHelper() {
         
         XCTAssertEqual(ControlStateHelper.parseControlState("normal"),
-                       UIControlState.Normal.rawValue)
+                       UIControlState.normal.rawValue)
         
         XCTAssertEqual(ControlStateHelper.parseControlState("disabled"),
-                       UIControlState.Disabled.rawValue)
+                       UIControlState.disabled.rawValue)
         
         XCTAssertEqual(ControlStateHelper.parseControlState("application"),
-                       UIControlState.Application.rawValue)
+                       UIControlState.application.rawValue)
         
         XCTAssertEqual(ControlStateHelper.parseControlState("focused"),
-                       UIControlState.Focused.rawValue)
+                       UIControlState.focused.rawValue)
         
         XCTAssertEqual(ControlStateHelper.parseControlState("highlighted"),
-                       UIControlState.Highlighted.rawValue)
+                       UIControlState.highlighted.rawValue)
         
         XCTAssertEqual(ControlStateHelper.parseControlState("reserved"),
-                       UIControlState.Reserved.rawValue)
+                       UIControlState.reserved.rawValue)
         
         XCTAssertEqual(ControlStateHelper.parseControlState("testfallback"),
-                       UIControlState.Normal.rawValue)
+                       UIControlState.normal.rawValue)
         
     }
     
@@ -60,7 +60,7 @@ class HelperTests: XCTestCase {
         // Testing font fallback with bad font parameter
         
         XCTAssertEqual(FontHelper.parseFont("unknown:30"),
-                       UIFont.systemFontOfSize(30),
+                       UIFont.systemFont(ofSize: 30),
                        "Font helper should return system font with size 30")
         
         // Testing font helper with bad font:size parameter

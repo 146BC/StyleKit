@@ -44,13 +44,13 @@ StyleKit is a microframework that enables you to style your applications using a
 *AppDelegate.swift*
 
 ```swift
-func application(application: UIApplication,
-                 didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-
-    if let styleFile = NSBundle.mainBundle().URLForResource("style", withExtension: "json") {
+func application(_ application: UIApplication,
+                 didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    
+    if let styleFile = Bundle.main.url(forResource: "style", withExtension: "json") {
         StyleKit(fileUrl: styleFile)?.apply()
     }
-
+    
     return true
 }
 ```
@@ -88,8 +88,7 @@ StyleKit's initialiser supports passing a custom parser which should conform to 
 ```swift
 class StyleParser: StyleParsable {
 
-    func getStyle(forName name: String, value: AnyObject) -> AnyObject {
-
+    func getStyle(forName name: String, value: AnyObject) -> AnyObject { 
         if let value = value as? String {
             if let font = FontHelper.parseFont(value) {
                 return font
@@ -98,7 +97,6 @@ class StyleParser: StyleParsable {
             }
         }
         return value
-
     }
 }
 ```
@@ -106,13 +104,13 @@ class StyleParser: StyleParsable {
 *AppDelegate.swift*
 
 ```swift
-func application(application: UIApplication,
-                 didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-
-    if let styleFile = NSBundle.mainBundle().URLForResource("style", withExtension: "json") {
-		StyleKit(fileUrl: styleFile, styleParser: StyleParser())?.apply()
+func application(_ application: UIApplication,
+                 didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    
+    if let styleFile = Bundle.main.url(forResource: "style", withExtension: "json") {
+        StyleKit(fileUrl: styleFile, styleParser: StyleParser())?.apply()
     }
-
+    
     return true
 }
 ```
@@ -122,23 +120,31 @@ func application(application: UIApplication,
 By default, StyleKit will log any errors to the console. To customise the level of logging, you can pass a logLevel parameter as follows:
 
 ```swift
-StyleKit(fileUrl: styleFile, logLevel: .Debug)?.apply()
+StyleKit(fileUrl: styleFile, logLevel: .debug)?.apply()
 ```
 
 The levels of logging are:
 
-* ```.Debug```
-* ```.Error``` (This is the default log level)
-* ```.Severe```
-* ```.None```
+* ```.debug```
+* ```.error``` (This is the default log level)
+* ```.severe```
+* ```.none```
 
 
 ###How to install?
 
 ####Carthage
 
+#####Swift 2.2 & 2.3
+
 ```ogdl
 github "146BC/StyleKit" ~> 0.4
+```
+
+#####Swift 3
+
+```ogdl
+github "146BC/StyleKit" ~> 0.5
 ```
 
 ####CocoaPods
@@ -150,6 +156,14 @@ source 'https://github.com/146BC/Specs.git'
 source 'https://github.com/CocoaPods/Specs.git'
 ```
 
+#####Swift 2.2 & 2.3
+
 ```ruby
 pod 'StyleKit', '~> 0.4'
+```
+
+#####Swift 3
+
+```ruby
+pod 'StyleKit', '~> 0.5'
 ```
