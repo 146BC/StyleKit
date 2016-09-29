@@ -5,7 +5,7 @@ class JSONLoadTests: XCTestCase {
     
     func testSuccessLoad() {
         
-        guard let styleFile = NSBundle(forClass: self.dynamicType).URLForResource("success-style", withExtension: "json") else {
+        guard let styleFile = Bundle(for: type(of: self)).url(forResource: "success-style", withExtension: "json") else {
                 XCTFail("Unable to find success-style.json file")
                 return
         }
@@ -16,7 +16,7 @@ class JSONLoadTests: XCTestCase {
     
     func testFailLoad() {
         
-        guard let styleFile = NSBundle(forClass: self.dynamicType).URLForResource("fail-style", withExtension: "json") else {
+        guard let styleFile = Bundle(for: type(of: self)).url(forResource: "fail-style", withExtension: "json") else {
             XCTFail("Unable to find fail-style.json file")
             return
         }

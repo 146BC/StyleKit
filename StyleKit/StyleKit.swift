@@ -4,7 +4,7 @@ public class StyleKit {
     
     let stylist: Stylist
     
-    public init?(fileUrl: NSURL, styleParser: StyleParsable? = nil, logLevel: SKLogLevel = .Error) {
+    public init?(fileUrl: URL, styleParser: StyleParsable? = nil, logLevel: SKLogLevel = .error) {
         let log = SKLogger.defaultInstance()
         log.setup(logLevel,
                   showLogIdentifier: false,

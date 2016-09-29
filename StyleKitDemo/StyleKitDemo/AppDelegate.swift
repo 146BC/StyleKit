@@ -6,16 +6,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    func application(application: UIApplication,
-                     didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        if let styleFile = NSBundle.mainBundle().URLForResource("style", withExtension: "json") {
+        if let styleFile = Bundle.main.url(forResource: "style", withExtension: "json") {
             
             // Uses style parser within demo app
             //StyleKit(fileUrl: styleFile, styleParser: StyleParser())?.apply()
             
             // Uses default style parser
-            StyleKit(fileUrl: styleFile, logLevel: .Debug)?.apply()
+            StyleKit(fileUrl: styleFile, logLevel: .debug)?.apply()
             
         }
         

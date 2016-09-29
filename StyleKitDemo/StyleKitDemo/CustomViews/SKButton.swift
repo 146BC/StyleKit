@@ -5,31 +5,31 @@ class SKButton: UIButton {
     
     private var backgroundColors: [UInt: UIColor] = [:]
     
-    override var selected: Bool {
+    override var isSelected: Bool {
         didSet {
             updateBackgroundColorForState(state)
         }
     }
     
-    override var highlighted: Bool {
+    override var isHighlighted: Bool {
         didSet {
             updateBackgroundColorForState(state)
         }
     }
     
-    func setTransparency(alpha: NSNumber) {
+    func setTransparency(_ alpha: NSNumber) {
         self.alpha = CGFloat(alpha.floatValue) / 100.0
     }
     
-    func setBackgroundColor(color: UIColor, forState state: UIControlState) {
+    func setBackgroundColor(_ color: UIColor, forState state: UIControlState) {
         backgroundColors[state.rawValue] = color
         
-        if state == UIControlState.Normal {
+        if state == UIControlState() {
             updateBackgroundColorForState(state)
         }
     }
     
-    private func updateBackgroundColorForState(state: UIControlState) {
+    private func updateBackgroundColorForState(_ state: UIControlState) {
         backgroundColor = backgroundColors[state.rawValue]
     }
 }
