@@ -1,6 +1,6 @@
 ![alt text](https://i.imgur.com/IqDIU4q.png "StyleKit - A powerful & easy to use styling framework written in Swift")
 
-[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![Build Status](https://travis-ci.org/146BC/StyleKit.svg?branch=develop)](https://travis-ci.org/146BC/StyleKit) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 StyleKit is a microframework that enables you to style your applications using a simple JSON file. Behind the scenes, StyleKit uses [UIAppearance](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIAppearance_Protocol/) and some selector magic to apply the styles. You can also customize the parser for greater flexibility.
 
