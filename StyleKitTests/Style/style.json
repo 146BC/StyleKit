@@ -1,0 +1,48 @@
+{
+    "UINavigationBar": {
+        "tintColor": "#000",
+        "titleTextAttributes": {
+            "NSColor": "#FF000000",
+            "NSFont": "HelveticaNeue-Light:18.0"
+        }
+    },
+    "UILabel": {
+        "font": "HelveticaNeue-Bold:15.0",
+        "textColor": "#fff",
+        "backgroundColor": "#eee"
+    },
+    "StyleKitTests.SKLabel": {
+        "font": "HelveticaNeue-Light:17.0",
+        "color": "#000"
+    },
+    "UIButton": {
+        "font": "HelveticaNeue-Medium:13.0",
+        "titleColor:normal": "#000",
+        "titleColor:highlighted": "#fff"
+    },
+    "StyleKitTests.SKButton": {
+        "backgroundColor:normal": "#000",
+        "backgroundColor:highlighted": "#fff",
+        "titleColor:normal": "#fff",
+        "titleColor:highlighted": "#000",
+        "font": "HelveticaNeue-Light:13.0",
+        "transparency":70
+    },
+    "StyleKitTests.SKView": {
+        "backgroundColor": "#000"
+    },
+    "UIScrollView": {
+        "UILabel": {
+            "font": "HelveticaNeue-Light:20.0",
+            "color": "#000"
+        },
+        "StyleKitTests.SKView": {
+            "backgroundColor": "#fff",
+            "StyleKitTests.SKLabel": {
+                "font": "HelveticaNeue-Light:40.0",
+                "color": "#fff",
+                "padding": [0,30,0,0]
+            }
+        }
+    }
+}
