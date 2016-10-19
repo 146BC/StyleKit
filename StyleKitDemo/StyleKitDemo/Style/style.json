@@ -55,12 +55,7 @@
             "StyleKitDemo.SKLabel": {
                 "font": "HelveticaNeue-Bold:15.0",
                 "color": "@primaryColor",
-                "padding": [
-                            0,
-                            30,
-                            0,
-                            0
-                            ],
+                "padding": [0,30,0,0],
                 "backgroundColor": "#eee"
             }
         }
