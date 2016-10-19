@@ -1,9 +1,13 @@
 {
+    "@mainFont": "HelveticaNeue-Bold:20.0",
+    "@primaryColor": "#000000",
+    "@secondaryColor": "#000FFF",
+    "@transperancyValue": 90,
     "StyleKitDemo.SKNavigationBar": {
-        "tintColor": "#000",
+        "tintColor": "@secondaryColor",
         "titleTextAttributes": {
             "NSColor": "#99000000",
-            "NSFont": "HelveticaNeue-Light:18.0"
+            "NSFont": "@mainFont"
         }
     },
     "UITableView": {
@@ -21,12 +25,12 @@
         }
     },
     "StyleKitDemo.SKButton": {
-        "backgroundColor:normal": "#cd0073",
+        "backgroundColor:normal": "@primaryColor",
         "backgroundColor:highlighted": "#8000c6",
         "titleColor:normal": "#fff",
         "titleColor:highlighted": "#fff",
         "font": "HelveticaNeue-Light:13.0",
-        "transparency":70
+        "transparency":"@transperancyValue"
     },
     "UIButton": {
         "font": "HelveticaNeue-Medium:13.0",

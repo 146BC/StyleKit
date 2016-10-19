@@ -6,13 +6,27 @@ class Stylist {
     typealias setValueForControlState = @convention(c) (AnyObject, Selector, AnyObject, UInt) -> Void
     
     let data: Style
+    let aliases: Style
     let styleParser: StyleParsable
     var currentComponent: AnyClass?
     var viewStack = [UIAppearanceContainer.Type]()
     
     init(data: Style, styleParser: StyleParsable?) {
         self.styleParser = styleParser ?? StyleParser()
-        self.data = data
+        
+        var tmpAlias: Style = [:]
+        var tmpData: Style = [:]
+        
+        for (key, value) in data {
+            if key.hasPrefix("@") {
+                tmpAlias[key] = value
+            } else {
+                tmpData[key] = value
+            }
+        }
+        
+        self.data = tmpData
+        self.aliases = tmpAlias
     }
     
     func apply() {
@@ -78,14 +92,33 @@ class Stylist {
         if let styles = object as? Stylist.Style {
             var stylesToApply = Stylist.Style()
             for (style, value) in styles {
-                stylesToApply[style] = styleParser.getStyle(forName: name, value: value)
+                stylesToApply[style] = styleParser.getStyle(forName: name, value: self.getValue(value))
             }
             callAppearanceSelector(selectorName, valueOne: stylesToApply as AnyObject?, valueTwo: state)
         } else {
-            let value = styleParser.getStyle(forName: name, value: object)
+            let value = styleParser.getStyle(forName: name, value: self.getValue(object))
             callAppearanceSelector(selectorName, valueOne: value, valueTwo: state)
         }
+    }
+
+    /**
+        Checks if the value is an alias, and if it is resolves to the correct value. 
+        Otherwise, it will return the passed value.
+     
+        - Parameter value: The alias name or actual value
+    */
+    private func getValue(_ value: AnyObject) -> AnyObject {
+        guard value is String, value.hasPrefix("@") else {
+            return value
+        }
         
+        if let aliasValue = aliases[value as! String] {
+            return aliasValue
+        } else {
+            SKLogger.error("Value declared is using Alias \(value) which has not been defined")
+            
+            return value
+        }
     }
     
     private func callAppearanceSelector(_ selector: String, valueOne: AnyObject?, valueTwo: AnyObject?) {
@@ -136,5 +169,4 @@ class Stylist {
             }
         }
     }
-    
 }
