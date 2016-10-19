@@ -14,8 +14,8 @@ class Stylist {
     init(data: Style, styleParser: StyleParsable?) {
         self.styleParser = styleParser ?? StyleParser()
         
-        var tmpAlias: Style = [:]
-        var tmpData: Style = [:]
+        var tmpAlias = Style()
+        var tmpData = Style()
         
         for (key, value) in data {
             if key.hasPrefix("@") {
@@ -108,11 +108,12 @@ class Stylist {
         - Parameter value: The alias name or actual value
     */
     private func getValue(_ value: AnyObject) -> AnyObject {
-        guard value is String, value.hasPrefix("@") else {
+        
+        guard let stringValue = value as? String, stringValue.hasPrefix("@") else {
             return value
         }
         
-        if let aliasValue = aliases[value as! String] {
+        if let aliasValue = aliases[stringValue] {
             return aliasValue
         } else {
             SKLogger.error("Value declared is using Alias \(value) which has not been defined")

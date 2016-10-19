@@ -1,45 +1,46 @@
 {
     "@mainFont": "HelveticaNeue-Bold:20.0",
-    "@primaryColor": "#000000",
-    "@secondaryColor": "#000FFF",
-    "@transperancyValue": 90,
+    "@secondaryFont": "HelveticaNeue-Medium:13.0",
+    "@primaryColor": "#cd0073",
+    "@secondaryColor": "#8000c6",
+    "@transparencyValue": 90,
     "StyleKitDemo.SKNavigationBar": {
         "tintColor": "@secondaryColor",
         "titleTextAttributes": {
-            "NSColor": "#99000000",
+            "NSColor": "@primaryColor",
             "NSFont": "@mainFont"
         }
     },
     "UITableView": {
         "UITableViewCell": {
             "UILabel": {
-                "font": "HelveticaNeue-Medium:13.0",
+                "font": "@secondaryFont",
                 "color": "#000"
             }
         }
     },
     "UITableViewCell": {
         "UILabel": {
-            "font": "HelveticaNeue-Medium:13.0",
+            "font": "@secondaryFont",
             "color": "#000"
         }
     },
     "StyleKitDemo.SKButton": {
         "backgroundColor:normal": "@primaryColor",
-        "backgroundColor:highlighted": "#8000c6",
+        "backgroundColor:highlighted": "@secondaryColor",
         "titleColor:normal": "#fff",
         "titleColor:highlighted": "#fff",
         "font": "HelveticaNeue-Light:13.0",
-        "transparency":"@transperancyValue"
+        "transparency": "@transparencyValue"
     },
     "UIButton": {
-        "font": "HelveticaNeue-Medium:13.0",
+        "font": "@secondaryFont",
         "titleColor:normal": "#000",
         "titleColor:highlighted": "#555"
     },
     "StyleKitDemo.SKLabel": {
         "font": "HelveticaNeue-Light:17.0",
-        "color": "#cd0073"
+        "color": "@primaryColor"
     },
     "UILabel": {
         "font": "HelveticaNeue-Bold:15.0",
@@ -53,8 +54,13 @@
         "StyleKitDemo.SKView": {
             "StyleKitDemo.SKLabel": {
                 "font": "HelveticaNeue-Bold:15.0",
-                "color": "#cd0073",
-                "padding": [0,30,0,0],
+                "color": "@primaryColor",
+                "padding": [
+                            0,
+                            30,
+                            0,
+                            0
+                            ],
                 "backgroundColor": "#eee"
             }
         }
@@ -68,13 +74,13 @@
         }
     },
     "StyleKitDemo.SKTextField": {
-        "textColor": "#cd0073",
+        "textColor": "@primaryColor",
         "UILabel": {
-            "color": "#cd0073"
+            "color": "@primaryColor"
         }
     },
     "UISegmentedControl": {
-        "tintColor": "#cd0073",
+        "tintColor": "@primaryColor",
         "titleTextAttributes:normal": {
             "NSColor": "#999",
             "NSFont": "HelveticaNeue-Light:15.0"
@@ -85,6 +91,6 @@
         }
     },
     "UIActivityIndicatorView": {
-        "color": "#cd0073"
+        "color": "@primaryColor"
     }
 }
