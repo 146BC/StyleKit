@@ -62,7 +62,7 @@
 		9967759C1D5A3607005DA08A /* FontHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontHelper.swift; sourceTree = "<group>"; };
 		9967759E1D5A3691005DA08A /* ColorHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorHelper.swift; sourceTree = "<group>"; };
 		996775A01D5A38E8005DA08A /* ControlStateHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControlStateHelper.swift; sourceTree = "<group>"; };
-		A100097C1DB02AF300C761CC /* StyleKitTestsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StyleKitTestsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A100097C1DB02AF300C761CC /* StyleKitTestsHost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StyleKitTestsHost.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A100097E1DB02AF300C761CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A100098A1DB02AF300C761CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A10009911DB02D8D00C761CC /* style.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = style.json; path = Style/style.json; sourceTree = "<group>"; };
@@ -114,13 +114,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A100097D1DB02AF300C761CC /* StyleKitTestsApp */ = {
+		A100097D1DB02AF300C761CC /* StyleKitTestsHost */ = {
 			isa = PBXGroup;
 			children = (
 				A100097E1DB02AF300C761CC /* AppDelegate.swift */,
 				A100098A1DB02AF300C761CC /* Info.plist */,
 			);
-			path = StyleKitTestsApp;
+			path = StyleKitTestsHost;
 			sourceTree = "<group>";
 		};
 		A10FD6901D53FA2600341EDD = {
@@ -137,7 +137,7 @@
 			children = (
 				A10FD69A1D53FA2600341EDD /* StyleKit.framework */,
 				A10FD6A41D53FA2600341EDD /* StyleKitTests.xctest */,
-				A100097C1DB02AF300C761CC /* StyleKitTestsApp.app */,
+				A100097C1DB02AF300C761CC /* StyleKitTestsHost.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -161,7 +161,7 @@
 		A10FD6A81D53FA2600341EDD /* StyleKitTests */ = {
 			isa = PBXGroup;
 			children = (
-				A100097D1DB02AF300C761CC /* StyleKitTestsApp */,
+				A100097D1DB02AF300C761CC /* StyleKitTestsHost */,
 				A1C5E1231DA91B7C0026464A /* UI Extensions */,
 				A1C515691D5A7D2B0016BF1E /* Style */,
 				A1C5E1281DAAF1BB0026464A /* StyleTests.swift */,
@@ -232,9 +232,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		A100097B1DB02AF300C761CC /* StyleKitTestsApp */ = {
+		A100097B1DB02AF300C761CC /* StyleKitTestsHost */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A100098D1DB02AF300C761CC /* Build configuration list for PBXNativeTarget "StyleKitTestsApp" */;
+			buildConfigurationList = A100098D1DB02AF300C761CC /* Build configuration list for PBXNativeTarget "StyleKitTestsHost" */;
 			buildPhases = (
 				A10009781DB02AF300C761CC /* Sources */,
 				A10009791DB02AF300C761CC /* Frameworks */,
@@ -244,9 +244,9 @@
 			);
 			dependencies = (
 			);
-			name = StyleKitTestsApp;
+			name = StyleKitTestsHost;
 			productName = StyleKitTestsApp;
-			productReference = A100097C1DB02AF300C761CC /* StyleKitTestsApp.app */;
+			productReference = A100097C1DB02AF300C761CC /* StyleKitTestsHost.app */;
 			productType = "com.apple.product-type.application";
 		};
 		A10FD6991D53FA2600341EDD /* StyleKit */ = {
@@ -326,7 +326,7 @@
 			targets = (
 				A10FD6991D53FA2600341EDD /* StyleKit */,
 				A10FD6A31D53FA2600341EDD /* StyleKitTests */,
-				A100097B1DB02AF300C761CC /* StyleKitTestsApp */,
+				A100097B1DB02AF300C761CC /* StyleKitTestsHost */,
 			);
 		};
 /* End PBXProject section */
@@ -405,7 +405,7 @@
 /* Begin PBXTargetDependency section */
 		A100098F1DB02B1A00C761CC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A100097B1DB02AF300C761CC /* StyleKitTestsApp */;
+			target = A100097B1DB02AF300C761CC /* StyleKitTestsHost */;
 			targetProxy = A100098E1DB02B1A00C761CC /* PBXContainerItemProxy */;
 		};
 		A10FD6A71D53FA2600341EDD /* PBXTargetDependency */ = {
@@ -422,10 +422,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
-				INFOPLIST_FILE = "$(SRCROOT)/StyleKitTests/StyleKitTestsApp/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/StyleKitTests/StyleKitTestsHost/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = OneFourSixBC.StyleKitTestsApp;
+				PRODUCT_BUNDLE_IDENTIFIER = OneFourSixBC.StyleKitTestsHost;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_VERSION = 3.0;
@@ -438,10 +438,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
-				INFOPLIST_FILE = "$(SRCROOT)/StyleKitTests/StyleKitTestsApp/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/StyleKitTests/StyleKitTestsHost/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = OneFourSixBC.StyleKitTestsApp;
+				PRODUCT_BUNDLE_IDENTIFIER = OneFourSixBC.StyleKitTestsHost;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -604,7 +604,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = BernardGatt.StyleKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/StyleKitTestsApp.app/StyleKitTestsApp";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/StyleKitTestsHost.app/StyleKitTestsHost";
 			};
 			name = Debug;
 		};
@@ -616,20 +616,21 @@
 				PRODUCT_BUNDLE_IDENTIFIER = BernardGatt.StyleKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/StyleKitTestsApp.app/StyleKitTestsApp";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/StyleKitTestsHost.app/StyleKitTestsHost";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A100098D1DB02AF300C761CC /* Build configuration list for PBXNativeTarget "StyleKitTestsApp" */ = {
+		A100098D1DB02AF300C761CC /* Build configuration list for PBXNativeTarget "StyleKitTestsHost" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A100098B1DB02AF300C761CC /* Debug */,
 				A100098C1DB02AF300C761CC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A10FD6941D53FA2600341EDD /* Build configuration list for PBXProject "StyleKit" */ = {
 			isa = XCConfigurationList;
