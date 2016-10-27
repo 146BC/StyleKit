@@ -81,13 +81,19 @@ class StyleTests: XCTestCase {
         // UIButton
         XCTAssertEqual(button.titleLabel?.font.fontName, "HelveticaNeue-Medium")
         XCTAssertEqual(button.titleLabel?.font.pointSize, 13.0)
-        XCTAssertEqual(button.titleColor(for: .normal), UIColor(hexString: "#000"))
+        XCTAssertEqual(button.titleColor(for: .normal), UIColor(hexString: "#FAA"))
         XCTAssertEqual(button.titleColor(for: .highlighted), UIColor(hexString: "#fff"))
-        
+
     }
     
     func testExtendedComponents() {
-        
+        // SKButton
+        XCTAssertEqual(skButton.titleLabel?.font.fontName, "HelveticaNeue-Light")
+        XCTAssertEqual(skButton.titleLabel?.font.pointSize, 13.0)
+        XCTAssertEqual(skButton.titleColor(for: .normal), UIColor(hexString: "#FAA"))
+        XCTAssertEqual(skButton.titleColor(for: .highlighted), UIColor(hexString: "#000"))
+        XCTAssertEqual(skButton.backgroundColor, UIColor(hexString: "#0F0"))
+        XCTAssert(fabs(Float(skButton.alpha) - 0.7) < FLT_EPSILON)        
     }
     
 }

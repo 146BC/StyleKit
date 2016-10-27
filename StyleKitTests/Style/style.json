@@ -1,9 +1,12 @@
 {
+    "@ButtonTitleColor": "#FAA",
+    "@ButtonBackgroundColor": "#0F0",
+    "@UINavBarFont": "HelveticaNeue-Light:18.0",
     "UINavigationBar": {
         "tintColor": "#000",
         "titleTextAttributes": {
             "NSColor": "#FF000000",
-            "NSFont": "HelveticaNeue-Light:18.0"
+            "NSFont": "@UINavBarFont"
         }
     },
     "UILabel": {
@@ -17,13 +20,13 @@
     },
     "UIButton": {
         "font": "HelveticaNeue-Medium:13.0",
-        "titleColor:normal": "#000",
+        "titleColor:normal": "@ButtonTitleColor",
         "titleColor:highlighted": "#fff"
     },
     "StyleKitTests.SKButton": {
-        "backgroundColor:normal": "#000",
+        "backgroundColor:normal": "@ButtonBackgroundColor",
         "backgroundColor:highlighted": "#fff",
-        "titleColor:normal": "#fff",
+        "titleColor:normal": "@ButtonTitleColor",
         "titleColor:highlighted": "#000",
         "font": "HelveticaNeue-Light:13.0",
         "transparency":70
