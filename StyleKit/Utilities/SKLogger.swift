@@ -114,7 +114,7 @@ internal class SKConsoleLogDestination: CustomDebugStringConvertible {
                 if let threadName = Thread.current.name , !threadName.isEmpty {
                     extendedDetails += "[" + threadName + "] "
                 }
-                else if let queueName = String(validatingUTF8: logQueue!.label) , !queueName.isEmpty {
+                else if let label = logQueue?.label, let queueName = String(validatingUTF8: label) , !queueName.isEmpty {
                     extendedDetails += "[" + queueName + "] "
                 }
                 else {
