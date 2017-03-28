@@ -2,7 +2,7 @@ language: objective-c
 
 xcode_project: StyleKit.xcodeproj
 xcode_scheme: StyleKit
-osx_image: xcode8
+osx_image: xcode8.3
 xcode_sdk: macosx10.11
 
 script:
