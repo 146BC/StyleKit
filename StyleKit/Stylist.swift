@@ -33,7 +33,7 @@ class Stylist {
         SKTryCatch.try( {
             self.validateAndApply(self.data)
         }, catch: { exception in
-            SKLogger.severe("There was an error while applying styles: \(exception)")
+            SKLogger.severe("There was an error while applying styles: \(exception.debugDescription)")
         }, finallyBlock: nil)
     }
     
@@ -58,7 +58,7 @@ class Stylist {
                         SKLogger.error("Style \(value) not applied on \(key) for \(self.currentComponent.debugDescription)")
                     }
                 }, catch: { exception in
-                    SKLogger.error("Style \(value) not applied on \(key) for \(self.currentComponent.debugDescription) Error \(exception)")
+                    SKLogger.error("Style \(value) not applied on \(key) for \(self.currentComponent.debugDescription) Error \(exception.debugDescription)")
                 }, finallyBlock: nil)
             }
         }
@@ -135,38 +135,38 @@ class Stylist {
         if valueOne == nil && valueTwo == nil {
             if isViewStackRelevant {
                 if #available(iOS 9.0, *) {
-                    _ = self.currentComponent?.appearance(whenContainedInInstancesOf: viewStack).perform(Selector(modifiedSelector))
+                    _ = (self.currentComponent!.appearance(whenContainedInInstancesOf: viewStack) as! NSObject).perform(Selector(modifiedSelector))
                 } else {
-                    _ = self.currentComponent?.styleKitAppearanceWhenContained(within: viewStack).perform(Selector(modifiedSelector))
+                    _ = (self.currentComponent!.styleKitAppearanceWhenContained(within: viewStack) as! NSObject).perform(Selector(modifiedSelector))
                 }
             } else {
-                _ = self.currentComponent?.appearance().perform(Selector(modifiedSelector))
+                _ = (self.currentComponent!.appearance() as! NSObject).perform(Selector(modifiedSelector))
             }
         } else if valueOne != nil && valueTwo != nil {
             if isViewStackRelevant {
                 if #available(iOS 9.0, *) {
-                    let methodSignature = self.currentComponent!.appearance(whenContainedInInstancesOf: viewStack).method(for: Selector(modifiedSelector))
+                    let methodSignature = (self.currentComponent!.appearance(whenContainedInInstancesOf: viewStack) as! NSObject).method(for: Selector(modifiedSelector))
                     let callback = unsafeBitCast(methodSignature, to: setValueForControlState.self)
                     callback(self.currentComponent!.appearance(whenContainedInInstancesOf: viewStack), Selector(modifiedSelector), valueOne!, valueTwo as! UInt)
                 } else {
-                    let methodSignature = self.currentComponent!.styleKitAppearanceWhenContained(within: viewStack).method(for: Selector(modifiedSelector))
+                    let methodSignature = (self.currentComponent!.styleKitAppearanceWhenContained(within: viewStack) as! NSObject).method(for: Selector(modifiedSelector))
                     let callback = unsafeBitCast(methodSignature, to: setValueForControlState.self)
                     callback(self.currentComponent!.styleKitAppearanceWhenContained(within: viewStack), Selector(modifiedSelector), valueOne!, valueTwo as! UInt)
                 }
             } else {
-                let methodSignature = self.currentComponent!.appearance().method(for: Selector(modifiedSelector))
+                let methodSignature = (self.currentComponent!.appearance() as! NSObject).method(for: Selector(modifiedSelector))
                 let callback = unsafeBitCast(methodSignature, to: setValueForControlState.self)
                 callback(self.currentComponent!.appearance(), Selector(modifiedSelector), valueOne!, valueTwo as! UInt)
             }
         } else if valueOne != nil {
             if isViewStackRelevant {
                 if #available(iOS 9.0, *) {
-                    _ = self.currentComponent?.appearance(whenContainedInInstancesOf: viewStack).perform(Selector(modifiedSelector), with: valueOne!)
+                    _ = (self.currentComponent!.appearance(whenContainedInInstancesOf: viewStack) as! NSObject).perform(Selector(modifiedSelector), with: valueOne!)
                 } else {
-                    _ = self.currentComponent?.styleKitAppearanceWhenContained(within: viewStack).perform(Selector(modifiedSelector), with: valueOne!)
+                    _ = self.currentComponent!.styleKitAppearanceWhenContained(within: viewStack).perform(Selector(modifiedSelector), with: valueOne!)
                 }
             } else {
-                _ = self.currentComponent?.appearance().perform(Selector(modifiedSelector), with: valueOne!)
+                _ = (self.currentComponent!.appearance() as! NSObject).perform(Selector(modifiedSelector), with: valueOne!)
             }
         }
     }
