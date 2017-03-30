@@ -6,4 +6,4 @@ osx_image: xcode8.3
 xcode_sdk: macosx10.11
 
 script:
-  - xcodebuild clean build test -project StyleKit.xcodeproj -scheme StyleKit -destination 'platform=iOS Simulator,name=iPhone 7,OS=10.0'
+  - xcodebuild clean build test -project StyleKit.xcodeproj -scheme StyleKit -destination 'platform=iOS Simulator,name=iPhone 7,OS=10.3'
