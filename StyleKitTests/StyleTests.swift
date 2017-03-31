@@ -109,7 +109,7 @@ class StyleTests: XCTestCase {
         XCTAssertEqual(nestedLabel.font.pointSize, 20.0)
         XCTAssertEqual(nestedLabel.textColor, UIColor(hexString: "#999"))
         
-        // SKView Scroll View
+        // SKView inside Scroll View
         XCTAssertEqual(nestedSKView.backgroundColor, UIColor(hexString: "#888"))
         
         // SKLabel inside nested SKView
