@@ -15,6 +15,11 @@
 		9967759D1D5A3607005DA08A /* FontHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9967759C1D5A3607005DA08A /* FontHelper.swift */; };
 		9967759F1D5A3691005DA08A /* ColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9967759E1D5A3691005DA08A /* ColorHelper.swift */; };
 		996775A11D5A38E8005DA08A /* ControlStateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996775A01D5A38E8005DA08A /* ControlStateHelper.swift */; };
+		A100097F1DB02AF300C761CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100097E1DB02AF300C761CC /* AppDelegate.swift */; };
+		A10009961DB02D9D00C761CC /* SKLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10009931DB02D9D00C761CC /* SKLabel.swift */; };
+		A10009971DB02D9D00C761CC /* SKView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10009941DB02D9D00C761CC /* SKView.swift */; };
+		A10009981DB02D9D00C761CC /* SKButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10009951DB02D9D00C761CC /* SKButton.swift */; };
+		A10009A01DB0313200C761CC /* style.json in Resources */ = {isa = PBXBuildFile; fileRef = A10009911DB02D8D00C761CC /* style.json */; };
 		A104CE3F1D57E9D200626F2A /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A104CE3E1D57E9D200626F2A /* StringExtensions.swift */; };
 		A104CE431D580D6A00626F2A /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A104CE421D580D6A00626F2A /* ColorExtensions.swift */; };
 		A10FD69E1D53FA2600341EDD /* StyleKit.h in Headers */ = {isa = PBXBuildFile; fileRef = A10FD69D1D53FA2600341EDD /* StyleKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -26,11 +31,19 @@
 		A155AE911D5A9A8700C1BC28 /* HelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A155AE901D5A9A8700C1BC28 /* HelperTests.swift */; };
 		A1C5156B1D5A7DC00016BF1E /* success-style.json in Resources */ = {isa = PBXBuildFile; fileRef = A1C5156A1D5A7DC00016BF1E /* success-style.json */; };
 		A1C5156D1D5A7DE20016BF1E /* fail-style.json in Resources */ = {isa = PBXBuildFile; fileRef = A1C5156C1D5A7DE20016BF1E /* fail-style.json */; };
+		A1C5E1291DAAF1BB0026464A /* StyleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C5E1281DAAF1BB0026464A /* StyleTests.swift */; };
 		A1D8B1221D57C28A00355807 /* StyleParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D8B1211D57C28A00355807 /* StyleParser.swift */; };
 		A1E4676E1D59494C003B1AB2 /* SKLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E4676D1D59494C003B1AB2 /* SKLogger.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		A100098E1DB02B1A00C761CC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A10FD6911D53FA2600341EDD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A100097B1DB02AF300C761CC;
+			remoteInfo = StyleKitTestsApp;
+		};
 		A10FD6A61D53FA2600341EDD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A10FD6911D53FA2600341EDD /* Project object */;
@@ -49,6 +62,13 @@
 		9967759C1D5A3607005DA08A /* FontHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontHelper.swift; sourceTree = "<group>"; };
 		9967759E1D5A3691005DA08A /* ColorHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorHelper.swift; sourceTree = "<group>"; };
 		996775A01D5A38E8005DA08A /* ControlStateHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControlStateHelper.swift; sourceTree = "<group>"; };
+		A100097C1DB02AF300C761CC /* StyleKitTestsHost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StyleKitTestsHost.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A100097E1DB02AF300C761CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A100098A1DB02AF300C761CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A10009911DB02D8D00C761CC /* style.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = style.json; path = Style/style.json; sourceTree = "<group>"; };
+		A10009931DB02D9D00C761CC /* SKLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKLabel.swift; sourceTree = "<group>"; };
+		A10009941DB02D9D00C761CC /* SKView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKView.swift; sourceTree = "<group>"; };
+		A10009951DB02D9D00C761CC /* SKButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKButton.swift; sourceTree = "<group>"; };
 		A104CE3E1D57E9D200626F2A /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		A104CE421D580D6A00626F2A /* ColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorExtensions.swift; sourceTree = "<group>"; };
 		A10FD69A1D53FA2600341EDD /* StyleKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = StyleKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -63,11 +83,19 @@
 		A155AE901D5A9A8700C1BC28 /* HelperTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperTests.swift; sourceTree = "<group>"; };
 		A1C5156A1D5A7DC00016BF1E /* success-style.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "success-style.json"; path = "Style/success-style.json"; sourceTree = "<group>"; };
 		A1C5156C1D5A7DE20016BF1E /* fail-style.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "fail-style.json"; path = "Style/fail-style.json"; sourceTree = "<group>"; };
+		A1C5E1281DAAF1BB0026464A /* StyleTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleTests.swift; sourceTree = "<group>"; };
 		A1D8B1211D57C28A00355807 /* StyleParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleParser.swift; sourceTree = "<group>"; };
 		A1E4676D1D59494C003B1AB2 /* SKLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKLogger.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		A10009791DB02AF300C761CC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A10FD6961D53FA2600341EDD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -86,6 +114,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A100097D1DB02AF300C761CC /* StyleKitTestsHost */ = {
+			isa = PBXGroup;
+			children = (
+				A100097E1DB02AF300C761CC /* AppDelegate.swift */,
+				A100098A1DB02AF300C761CC /* Info.plist */,
+			);
+			path = StyleKitTestsHost;
+			sourceTree = "<group>";
+		};
 		A10FD6901D53FA2600341EDD = {
 			isa = PBXGroup;
 			children = (
@@ -100,6 +137,7 @@
 			children = (
 				A10FD69A1D53FA2600341EDD /* StyleKit.framework */,
 				A10FD6A41D53FA2600341EDD /* StyleKitTests.xctest */,
+				A100097C1DB02AF300C761CC /* StyleKitTestsHost.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -110,12 +148,12 @@
 				A10FD6C01D55376600341EDD /* Helpers */,
 				A1D8B11C1D57BD8900355807 /* Utilities */,
 				A10FD6BE1D55357400341EDD /* FileLoader.swift */,
-				A10FD69F1D53FA2600341EDD /* Info.plist */,
-				A10FD69D1D53FA2600341EDD /* StyleKit.h */,
 				A10FD6C51D556A1F00341EDD /* StyleKit.swift */,
 				996775981D5A2E8E005DA08A /* StyleParsable.swift */,
 				A1D8B1211D57C28A00355807 /* StyleParser.swift */,
 				A10FD6C71D556A9C00341EDD /* Stylist.swift */,
+				A10FD69D1D53FA2600341EDD /* StyleKit.h */,
+				A10FD69F1D53FA2600341EDD /* Info.plist */,
 			);
 			path = StyleKit;
 			sourceTree = "<group>";
@@ -123,7 +161,10 @@
 		A10FD6A81D53FA2600341EDD /* StyleKitTests */ = {
 			isa = PBXGroup;
 			children = (
+				A100097D1DB02AF300C761CC /* StyleKitTestsHost */,
+				A1C5E1231DA91B7C0026464A /* UI Extensions */,
 				A1C515691D5A7D2B0016BF1E /* Style */,
+				A1C5E1281DAAF1BB0026464A /* StyleTests.swift */,
 				A10FD6A91D53FA2600341EDD /* JSONLoadTests.swift */,
 				A155AE901D5A9A8700C1BC28 /* HelperTests.swift */,
 				A10FD6AB1D53FA2600341EDD /* Info.plist */,
@@ -146,8 +187,19 @@
 			children = (
 				A1C5156A1D5A7DC00016BF1E /* success-style.json */,
 				A1C5156C1D5A7DE20016BF1E /* fail-style.json */,
+				A10009911DB02D8D00C761CC /* style.json */,
 			);
 			name = Style;
+			sourceTree = "<group>";
+		};
+		A1C5E1231DA91B7C0026464A /* UI Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A10009931DB02D9D00C761CC /* SKLabel.swift */,
+				A10009941DB02D9D00C761CC /* SKView.swift */,
+				A10009951DB02D9D00C761CC /* SKButton.swift */,
+			);
+			path = "UI Extensions";
 			sourceTree = "<group>";
 		};
 		A1D8B11C1D57BD8900355807 /* Utilities */ = {
@@ -180,6 +232,23 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		A100097B1DB02AF300C761CC /* StyleKitTestsHost */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A100098D1DB02AF300C761CC /* Build configuration list for PBXNativeTarget "StyleKitTestsHost" */;
+			buildPhases = (
+				A10009781DB02AF300C761CC /* Sources */,
+				A10009791DB02AF300C761CC /* Frameworks */,
+				A100097A1DB02AF300C761CC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = StyleKitTestsHost;
+			productName = StyleKitTestsApp;
+			productReference = A100097C1DB02AF300C761CC /* StyleKitTestsHost.app */;
+			productType = "com.apple.product-type.application";
+		};
 		A10FD6991D53FA2600341EDD /* StyleKit */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A10FD6AE1D53FA2600341EDD /* Build configuration list for PBXNativeTarget "StyleKit" */;
@@ -210,6 +279,7 @@
 			);
 			dependencies = (
 				A10FD6A71D53FA2600341EDD /* PBXTargetDependency */,
+				A100098F1DB02B1A00C761CC /* PBXTargetDependency */,
 			);
 			name = StyleKitTests;
 			productName = StyleKitTests;
@@ -222,10 +292,14 @@
 		A10FD6911D53FA2600341EDD /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0730;
+				LastSwiftUpdateCheck = 0800;
 				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Bernard Gatt";
 				TargetAttributes = {
+					A100097B1DB02AF300C761CC = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Automatic;
+					};
 					A10FD6991D53FA2600341EDD = {
 						CreatedOnToolsVersion = 7.3.1;
 						LastSwiftMigration = 0800;
@@ -233,6 +307,7 @@
 					A10FD6A31D53FA2600341EDD = {
 						CreatedOnToolsVersion = 7.3.1;
 						LastSwiftMigration = 0800;
+						TestTargetID = A100097B1DB02AF300C761CC;
 					};
 				};
 			};
@@ -242,6 +317,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = A10FD6901D53FA2600341EDD;
 			productRefGroup = A10FD69B1D53FA2600341EDD /* Products */;
@@ -250,11 +326,19 @@
 			targets = (
 				A10FD6991D53FA2600341EDD /* StyleKit */,
 				A10FD6A31D53FA2600341EDD /* StyleKitTests */,
+				A100097B1DB02AF300C761CC /* StyleKitTestsHost */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		A100097A1DB02AF300C761CC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A10FD6981D53FA2600341EDD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -266,6 +350,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A10009A01DB0313200C761CC /* style.json in Resources */,
 				A1C5156B1D5A7DC00016BF1E /* success-style.json in Resources */,
 				A1C5156D1D5A7DE20016BF1E /* fail-style.json in Resources */,
 			);
@@ -274,6 +359,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		A10009781DB02AF300C761CC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A100097F1DB02AF300C761CC /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A10FD6951D53FA2600341EDD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -298,7 +391,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A10009971DB02D9D00C761CC /* SKView.swift in Sources */,
+				A10009981DB02D9D00C761CC /* SKButton.swift in Sources */,
 				A10FD6AA1D53FA2600341EDD /* JSONLoadTests.swift in Sources */,
+				A1C5E1291DAAF1BB0026464A /* StyleTests.swift in Sources */,
+				A10009961DB02D9D00C761CC /* SKLabel.swift in Sources */,
 				A155AE911D5A9A8700C1BC28 /* HelperTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -306,6 +403,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		A100098F1DB02B1A00C761CC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A100097B1DB02AF300C761CC /* StyleKitTestsHost */;
+			targetProxy = A100098E1DB02B1A00C761CC /* PBXContainerItemProxy */;
+		};
 		A10FD6A71D53FA2600341EDD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = A10FD6991D53FA2600341EDD /* StyleKit */;
@@ -314,6 +416,37 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		A100098B1DB02AF300C761CC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				INFOPLIST_FILE = "$(SRCROOT)/StyleKitTests/StyleKitTestsHost/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = OneFourSixBC.StyleKitTestsHost;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		A100098C1DB02AF300C761CC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				INFOPLIST_FILE = "$(SRCROOT)/StyleKitTests/StyleKitTestsHost/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = OneFourSixBC.StyleKitTestsHost;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
 		A10FD6AC1D53FA2600341EDD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -471,6 +604,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = BernardGatt.StyleKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/StyleKitTestsHost.app/StyleKitTestsHost";
 			};
 			name = Debug;
 		};
@@ -482,12 +616,22 @@
 				PRODUCT_BUNDLE_IDENTIFIER = BernardGatt.StyleKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/StyleKitTestsHost.app/StyleKitTestsHost";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		A100098D1DB02AF300C761CC /* Build configuration list for PBXNativeTarget "StyleKitTestsHost" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A100098B1DB02AF300C761CC /* Debug */,
+				A100098C1DB02AF300C761CC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		A10FD6941D53FA2600341EDD /* Build configuration list for PBXProject "StyleKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

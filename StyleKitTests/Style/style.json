@@ -1,0 +1,52 @@
+{
+    "@ButtonTitleColor": "#FAA",
+    "@ButtonBackgroundColor": "#0F0",
+    "@NestedLabelColor": "#999",
+    "@UINavBarFont": "HelveticaNeue-Light:18.0",
+    "UINavigationBar": {
+        "tintColor": "#000",
+        "titleTextAttributes": {
+            "NSColor": "#FF000000",
+            "NSFont": "@UINavBarFont"
+        }
+    },
+    "UILabel": {
+        "font": "HelveticaNeue-Bold:15.0",
+        "textColor": "#fff",
+        "backgroundColor": "#eee"
+    },
+    "StyleKitTests.SKLabel": {
+        "font": "HelveticaNeue-Light:17.0",
+        "color": "#000"
+    },
+    "UIButton": {
+        "font": "HelveticaNeue-Medium:13.0",
+        "titleColor:normal": "@ButtonTitleColor",
+        "titleColor:highlighted": "#fff"
+    },
+    "StyleKitTests.SKButton": {
+        "backgroundColor:normal": "@ButtonBackgroundColor",
+        "backgroundColor:highlighted": "#fff",
+        "titleColor:normal": "@ButtonTitleColor",
+        "titleColor:highlighted": "#000",
+        "font": "HelveticaNeue-Light:13.0",
+        "transparency":70
+    },
+    "StyleKitTests.SKView": {
+        "backgroundColor": "#000"
+    },
+    "UIScrollView": {
+        "UILabel": {
+            "font": "HelveticaNeue-Medium:20.0",
+            "color": "@NestedLabelColor"
+        },
+        "StyleKitTests.SKView": {
+            "backgroundColor": "#888",
+            "StyleKitTests.SKLabel": {
+                "font": "HelveticaNeue-Light:40.0",
+                "color": "#fff",
+                "padding": [0,30,0,0]
+            }
+        }
+    }
+}
