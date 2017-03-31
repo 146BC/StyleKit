@@ -83,7 +83,6 @@ class StyleTests: XCTestCase {
         XCTAssertEqual(button.titleLabel?.font.pointSize, 13.0)
         XCTAssertEqual(button.titleColor(for: .normal), UIColor(hexString: "#FAA"))
         XCTAssertEqual(button.titleColor(for: .highlighted), UIColor(hexString: "#fff"))
-
     }
     
     func testExtendedComponents() {
@@ -93,7 +92,31 @@ class StyleTests: XCTestCase {
         XCTAssertEqual(skButton.titleColor(for: .normal), UIColor(hexString: "#FAA"))
         XCTAssertEqual(skButton.titleColor(for: .highlighted), UIColor(hexString: "#000"))
         XCTAssertEqual(skButton.backgroundColor, UIColor(hexString: "#0F0"))
-        XCTAssert(fabs(Float(skButton.alpha) - 0.7) < FLT_EPSILON)        
+        XCTAssert(fabs(Float(skButton.alpha) - 0.7) < FLT_EPSILON)
+        
+        // SKLabel
+        XCTAssertEqual(skLabel.font.fontName, "HelveticaNeue-Light")
+        XCTAssertEqual(skLabel.font.pointSize, 17.0)
+        XCTAssertEqual(skLabel.textColor, UIColor(hexString: "#000"))
+        
+        // SKView
+        XCTAssertEqual(skView.backgroundColor, UIColor(hexString: "#000"))
+    }
+    
+    func testNestedComponents() {
+        // Label inside Scroll View
+        XCTAssertEqual(nestedLabel.font.fontName, "HelveticaNeue-Medium")
+        XCTAssertEqual(nestedLabel.font.pointSize, 20.0)
+        XCTAssertEqual(nestedLabel.textColor, UIColor(hexString: "#999"))
+        
+        // SKView Scroll View
+        XCTAssertEqual(nestedSKView.backgroundColor, UIColor(hexString: "#888"))
+        
+        // SKLabel inside nested SKView
+        XCTAssertEqual(nestedSKLabel.font.fontName, "HelveticaNeue-Light")
+        XCTAssertEqual(nestedSKLabel.font.pointSize, 40.0)
+        XCTAssertEqual(nestedSKLabel.textColor, UIColor(hexString: "#fff"))
+        XCTAssertEqual(nestedSKLabel.padding, [0,30,0,0])
     }
     
 }

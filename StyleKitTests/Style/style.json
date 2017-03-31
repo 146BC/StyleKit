@@ -1,6 +1,7 @@
 {
     "@ButtonTitleColor": "#FAA",
     "@ButtonBackgroundColor": "#0F0",
+    "@NestedLabelColor": "#999",
     "@UINavBarFont": "HelveticaNeue-Light:18.0",
     "UINavigationBar": {
         "tintColor": "#000",
@@ -36,11 +37,11 @@
     },
     "UIScrollView": {
         "UILabel": {
-            "font": "HelveticaNeue-Light:20.0",
-            "color": "#000"
+            "font": "HelveticaNeue-Medium:20.0",
+            "color": "@NestedLabelColor"
         },
         "StyleKitTests.SKView": {
-            "backgroundColor": "#fff",
+            "backgroundColor": "#888",
             "StyleKitTests.SKLabel": {
                 "font": "HelveticaNeue-Light:40.0",
                 "color": "#fff",
