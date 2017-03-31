@@ -11,8 +11,9 @@ StyleKit is a microframework that enables you to style your applications using a
 
 ```js
 {
+	"@headingFont": "HelveticaNeue-Bold:30.0",
 	"UILabel": {
-		"font": "HelveticaNeue-Bold:30.0",
+		"font": "@headingFont",
 		"backgroundColor": "#000FFF"
 	},
 	"StyleKitDemo.SKView": {
@@ -30,7 +31,7 @@ StyleKit is a microframework that enables you to style your applications using a
 	"StyleKitDemo.SKNavigationBar": {
 		"titleTextAttributes": {
 			"NSColor": "#000FFF",
-			"NSFont": "HelveticaNeue-Bold:30.0"
+			"NSFont": "@headingFont"
 		}
 	},
 	"StyleKitDemo.SKTextField": {
@@ -78,6 +79,24 @@ Each object inside the JSON file should contain the name of the UIView as a key 
 This would apply HelveticaNeue-Bold with size 20 to all the UIButtons except the ones contained inside the LoginView class in your app.
 
 Custom classes must be namespaced by the name of the module they are contained in. e.g. `StyleKitDemo.SKTextField`
+
+### Aliases
+
+```js
+{
+    "@mainFont": "HelveticaNeue-Bold:20.0",
+    "@primaryColor": "#000FFF",
+    "UIButton": {
+        "font": "@mainFont"
+    },
+    "MyApp.LoginView": {
+        "UIButton": {
+            "font": "HelveticaNeue-Light:25.0",
+            "titleColor:normal": "@primaryColor"
+        }
+    }
+}
+```
 
 ### Bring Your Own Parser
 
@@ -144,7 +163,7 @@ github "146BC/StyleKit" ~> 0.4
 ##### Swift 3
 
 ```ogdl
-github "146BC/StyleKit" ~> 0.5
+github "146BC/StyleKit" ~> 0.6
 ```
 
 #### CocoaPods
@@ -165,5 +184,5 @@ pod 'StyleKit', '~> 0.4'
 ##### Swift 3
 
 ```ruby
-pod 'StyleKit', '~> 0.5'
+pod 'StyleKit', '~> 0.6'
 ```
