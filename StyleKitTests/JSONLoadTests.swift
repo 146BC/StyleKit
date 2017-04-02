@@ -6,8 +6,8 @@ class JSONLoadTests: XCTestCase {
     func testSuccessLoad() {
         
         guard let styleFile = Bundle(for: type(of: self)).url(forResource: "success-style", withExtension: "json") else {
-                XCTFail("Unable to find success-style.json file")
-                return
+            XCTFail("Unable to find success-style.json file")
+            return
         }
         
         XCTAssertNotNil(StyleKit(fileUrl: styleFile), "success-style.json failed")
