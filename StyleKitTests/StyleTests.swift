@@ -92,7 +92,7 @@ class StyleTests: XCTestCase {
         XCTAssertEqual(skButton.titleColor(for: .normal), UIColor(hexString: "#FAA"))
         XCTAssertEqual(skButton.titleColor(for: .highlighted), UIColor(hexString: "#000"))
         XCTAssertEqual(skButton.backgroundColor, UIColor(hexString: "#0F0"))
-        XCTAssert(fabs(Float(skButton.alpha) - 0.7) < FLT_EPSILON)
+        XCTAssert(fabs(Float(skButton.alpha) - 0.7) < Float.ulpOfOne)
         
         // SKLabel
         XCTAssertEqual(skLabel.font.fontName, "HelveticaNeue-Light")
