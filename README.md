@@ -154,16 +154,15 @@ The levels of logging are:
 
 #### Carthage
 
-##### Swift 2.2 & 2.3
-
-```ogdl
-github "146BC/StyleKit" ~> 0.4
-```
-
 ##### Swift 3
 
 ```ogdl
 github "146BC/StyleKit" ~> 0.6
+```
+##### Swift 4
+
+```ogdl
+github "146BC/StyleKit" ~> 0.7
 ```
 
 #### CocoaPods
@@ -175,14 +174,14 @@ source 'https://github.com/146BC/Specs.git'
 source 'https://github.com/CocoaPods/Specs.git'
 ```
 
-##### Swift 2.2 & 2.3
-
-```ruby
-pod 'StyleKit', '~> 0.4'
-```
-
 ##### Swift 3
 
 ```ruby
 pod 'StyleKit', '~> 0.6'
+```
+
+##### Swift 4
+
+```ruby
+pod 'StyleKit', '~> 0.7'
 ```

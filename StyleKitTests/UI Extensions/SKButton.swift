@@ -16,11 +16,13 @@ class SKButton: UIButton {
             updateBackgroundColorForState(state)
         }
     }
-    
+	
+	@objc
     func setTransparency(_ alpha: NSNumber) {
         self.alpha = CGFloat(alpha.floatValue) / 100.0
     }
-    
+	
+	@objc
     func setBackgroundColor(_ color: UIColor, forState state: UIControlState) {
         backgroundColors[state.rawValue] = color
         
