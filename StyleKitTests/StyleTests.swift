@@ -59,13 +59,13 @@ class StyleTests: XCTestCase {
         // UINavigationBar
         XCTAssertEqual(navigationBar.tintColor, UIColor(hexString: "#000"))
         
-        if let navigationBarColor = navigationBar.titleTextAttributes?["NSColor"] as? UIColor {
+        if let navigationBarColor = navigationBar.titleTextAttributes?[.foregroundColor] as? UIColor {
             XCTAssertEqual(navigationBarColor, UIColor(hexString: "#FF000000"))
         } else {
             XCTFail("Color not found in navigation")
         }
         
-        if let navigationBarFont = navigationBar.titleTextAttributes?["NSFont"] as? UIFont {
+        if let navigationBarFont = navigationBar.titleTextAttributes?[.font] as? UIFont {
             XCTAssertEqual(navigationBarFont.fontName, "HelveticaNeue-Light")
             XCTAssertEqual(navigationBarFont.pointSize, 18.0)
         } else {
