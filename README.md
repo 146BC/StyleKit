@@ -78,7 +78,7 @@ Each object inside the JSON file should contain the name of the UIView as a key 
 
 This would apply HelveticaNeue-Bold with size 20 to all the UIButtons except the ones contained inside the LoginView class in your app.
 
-Custom classes must be namespaced by the name of the module they are contained in. e.g. `StyleKitDemo.SKTextField`
+Custom classes can be namespaced by the name of the module they are contained in. e.g. `StyleKitDemo.SKTextField`
 
 ### Aliases
 
