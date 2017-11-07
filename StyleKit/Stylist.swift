@@ -92,11 +92,11 @@ class Stylist {
         if let styles = object as? Stylist.Style {
             var stylesToApply = Stylist.Style()
             for (style, value) in styles {
-                stylesToApply[style] = styleParser.getStyle(forName: name, value: self.getValue(value))
+                stylesToApply[style] = styleParser.getStyle(forName: style, value: getValue(value))
             }
-            callAppearanceSelector(selectorName, valueOne: stylesToApply as AnyObject?, valueTwo: state)
+            callAppearanceSelector(selectorName, valueOne: stylesToApply as AnyObject, valueTwo: state)
         } else {
-            let value = styleParser.getStyle(forName: name, value: self.getValue(object))
+            let value = styleParser.getStyle(forName: name, value: getValue(object))
             callAppearanceSelector(selectorName, valueOne: value, valueTwo: state)
         }
     }
