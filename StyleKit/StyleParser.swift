@@ -9,6 +9,10 @@ class StyleParser: StyleParsable {
                 return font
             } else if let color = ColorHelper.parseColor(value) {
                 return color
+            } 
+        } else if let value = value as? [String: Any] {
+            if let paragraphStyle = ParagraphStyleHelper.parseParagraphStyle(name, value: value) {
+                return paragraphStyle
             }
         }
         return value
