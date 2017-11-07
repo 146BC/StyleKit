@@ -121,17 +121,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eso-nR-K6x" customClass="SKButton" customModule="StyleKitDemo" customModuleProvider="target">
-                                <rect key="frame" x="155" y="128" width="65" height="60"/>
+                                <rect key="frame" x="87.666666666666686" y="128" width="200" height="60"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="LHU-wH-jpe"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="LHU-wH-jpe"/>
                                     <constraint firstAttribute="height" constant="60" id="XTr-hT-y9s"/>
                                 </constraints>
                                 <state key="normal" title="SKButton"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wkJ-zJ-6cx">
-                                <rect key="frame" x="157" y="248" width="61" height="60"/>
+                                <rect key="frame" x="87.666666666666686" y="248" width="200" height="60"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="i59-6Z-Mc3"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="i59-6Z-Mc3"/>
                                     <constraint firstAttribute="height" constant="60" id="jGL-yO-yHv"/>
                                 </constraints>
                                 <state key="normal" title="UIButton"/>
