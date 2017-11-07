@@ -2,7 +2,7 @@ import Foundation
 
 class StyleParser: StyleParsable {
     
-    func getStyle(forName name: String, value: AnyObject) -> AnyObject {
+    func getStyle(forName name: String, value: AnyObject) -> AnyObject? {
         
         if let value = value as? String {
             if let font = FontHelper.parseFont(value) {
