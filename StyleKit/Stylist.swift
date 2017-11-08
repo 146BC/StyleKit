@@ -8,10 +8,11 @@ class Stylist {
     let data: Style
     let aliases: Style
     let styleParser: StyleParsable
+    let moduleName: String?
     var currentComponent: AnyClass?
     var viewStack = [UIAppearanceContainer.Type]()
     
-    init(data: Style, styleParser: StyleParsable?) {
+    init(data: Style, styleParser: StyleParsable?, moduleName: String?) {
         self.styleParser = styleParser ?? StyleParser()
         
         var tmpAlias = Style()
@@ -27,6 +28,7 @@ class Stylist {
         
         self.data = tmpData
         self.aliases = tmpAlias
+        self.moduleName = moduleName
     }
     
     func apply() {
@@ -40,8 +42,8 @@ class Stylist {
     private func validateAndApply(_ data: Style) {
         
         for (key, value) in data {
-            if let value = value as? Style , NSClassFromString(key) != nil {
-                if selectCurrentComponent(key), let appearanceContainer = self.currentComponent! as? UIAppearanceContainer.Type {
+            if let value = value as? Style, let component = resolveComponent(from: key) {
+                if selectCurrentComponent(component), let appearanceContainer = self.currentComponent! as? UIAppearanceContainer.Type {
                     viewStack.append(appearanceContainer)
                 }
                 validateAndApply(value)
@@ -63,16 +65,25 @@ class Stylist {
             }
         }
     }
-    
-    private func selectCurrentComponent(_ name: String) -> Bool {
-        
-        SKLogger.debug("Switching to: \(name)")
-        
-        guard let currentComponent = NSClassFromString(name) else {
-            SKLogger.debug("Component \(name) cannot be selected")
-            return false
+
+    private typealias Component = (klass: AnyClass, name: String)
+
+    private func resolveComponent(from key: String) -> Component? {
+        let resolved: Component?
+        if let klass = NSClassFromString(key) {
+            resolved = (klass, key)
+        } else if let name = moduleName.flatMap({ "\($0).\(key)" })
+                , let klass = NSClassFromString(name) {
+            resolved = (klass, name)
+        } else {
+            resolved = nil
         }
-        self.currentComponent = currentComponent
+        return resolved
+    }
+    
+    private func selectCurrentComponent(_ component: Component) -> Bool {
+        SKLogger.debug("Switching to: \(component.name)")
+        self.currentComponent = component.klass
         return true
     }
     
@@ -92,11 +103,11 @@ class Stylist {
         if let styles = object as? Stylist.Style {
             var stylesToApply = Stylist.Style()
             for (style, value) in styles {
-                stylesToApply[style] = styleParser.getStyle(forName: name, value: self.getValue(value))
+                stylesToApply[style] = styleParser.getStyle(forName: style, value: getValue(value))
             }
-            callAppearanceSelector(selectorName, valueOne: stylesToApply as AnyObject?, valueTwo: state)
+            callAppearanceSelector(selectorName, valueOne: stylesToApply as AnyObject, valueTwo: state)
         } else {
-            let value = styleParser.getStyle(forName: name, value: self.getValue(object))
+            let value = styleParser.getStyle(forName: name, value: getValue(object))
             callAppearanceSelector(selectorName, valueOne: value, valueTwo: state)
         }
     }
