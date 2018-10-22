@@ -10,7 +10,7 @@ class SKLabel: UILabel {
 									   left: padding[1],
 									   bottom: padding[2],
 									   right: padding[3])
-        super.drawText(in: UIEdgeInsetsInsetRect(rect, insets))
+        super.drawText(in: rect.inset(by: insets))
     }
     
 }

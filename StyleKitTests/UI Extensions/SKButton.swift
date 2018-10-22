@@ -23,15 +23,15 @@ class SKButton: UIButton {
     }
 	
 	@objc
-    func setBackgroundColor(_ color: UIColor, forState state: UIControlState) {
+    func setBackgroundColor(_ color: UIColor, forState state: UIControl.State) {
         backgroundColors[state.rawValue] = color
         
-        if state == UIControlState() {
+        if state == UIControl.State() {
             updateBackgroundColorForState(state)
         }
     }
     
-    private func updateBackgroundColorForState(_ state: UIControlState) {
+    private func updateBackgroundColorForState(_ state: UIControl.State) {
         backgroundColor = backgroundColors[state.rawValue]
     }
 }

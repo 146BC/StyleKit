@@ -23,25 +23,25 @@ class HelperTests: XCTestCase {
     func testControlStateHelper() {
         
         XCTAssertEqual(ControlStateHelper.parseControlState("normal"),
-                       UIControlState.normal.rawValue)
+                       UIControl.State.normal.rawValue)
         
         XCTAssertEqual(ControlStateHelper.parseControlState("disabled"),
-                       UIControlState.disabled.rawValue)
+                       UIControl.State.disabled.rawValue)
         
         XCTAssertEqual(ControlStateHelper.parseControlState("application"),
-                       UIControlState.application.rawValue)
+                       UIControl.State.application.rawValue)
         
         XCTAssertEqual(ControlStateHelper.parseControlState("focused"),
-                       UIControlState.focused.rawValue)
+                       UIControl.State.focused.rawValue)
         
         XCTAssertEqual(ControlStateHelper.parseControlState("highlighted"),
-                       UIControlState.highlighted.rawValue)
+                       UIControl.State.highlighted.rawValue)
         
         XCTAssertEqual(ControlStateHelper.parseControlState("reserved"),
-                       UIControlState.reserved.rawValue)
+                       UIControl.State.reserved.rawValue)
         
         XCTAssertEqual(ControlStateHelper.parseControlState("testfallback"),
-                       UIControlState.normal.rawValue)
+                       UIControl.State.normal.rawValue)
         
     }
     

@@ -20,6 +20,6 @@ extension UIColor {
     }
     
     func getNSForegroundColorAttribute() -> [String:UIColor] {
-        return [NSAttributedStringKey.foregroundColor.rawValue:self]
+        return [NSAttributedString.Key.foregroundColor.rawValue:self]
     }
 }
